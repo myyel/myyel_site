@@ -1,0 +1,84 @@
+﻿@model myyel.Entity.BlogEntity
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title style="color:#626262">MyyeL Design</title>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Swiper.css" />
+    <link rel="stylesheet" href="~/Content/Admin-Site.css" />
+    <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+
+</head>
+<body>
+    <!--Admin_Navbar-->
+    <div class="admin-navbar">
+        <div class="admin-navbar-bg">
+            <div class="admin-navbar-left">
+                <a href="~/Home/Index"><img src="~/Content/img/logo-yan.png" /></a>
+            </div>
+            <div class="admin-navbar-right">
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Anasayfa", "Index", "Home")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Anasayfa İşlemleri", "HomeEdit", "Admin")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Kullanıcı İşlemleri", "Index", "Home")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Proje Resmi Ekle", "ProjectImage", "Admin")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Blog İşlemleri", "Blog", "Admin")
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-main-bg">
+            <div class="admin-title">
+                <img src="~/Content/img-icon/setting.png" />
+                <h1>Blog Detayı</h1>
+            </div>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        <h5>Resim</h5>
+                    </dt>
+                    <dd>
+                        <img src="~/Content/blog-img/@Model.Id .jpg" style="width:10vw" />
+                    </dd>
+                    <dt>
+                        <h5>Başlık</h5>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BlogTitle)
+                    </dd>
+
+                    <dt>
+                       <h5>Yazı</h5>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BlogItem)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+    <hr />
+</body>
+</html>

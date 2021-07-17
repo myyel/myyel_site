@@ -1,0 +1,110 @@
+﻿@model myyel.Entity.BlogEntity
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title style="color:#626262">MyyeL Design</title>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Swiper.css" />
+    <link rel="stylesheet" href="~/Content/Admin-Site.css" />
+    <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+
+</head>
+<body>
+    <!--Admin_Navbar-->
+    <div class="admin-navbar">
+        <div class="admin-navbar-bg">
+            <div class="admin-navbar-left">
+                <a href="~/Home/Index"><img src="~/Content/img/logo-yan.png" /></a>
+            </div>
+            <div class="admin-navbar-right">
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Anasayfa", "Index", "Home")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Anasayfa İşlemleri", "HomeEdit", "Admin")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Kullanıcı İşlemleri", "Index", "Home")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Proje Resmi Ekle", "ProjectImage", "Admin")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Blog İşlemleri", "Blog", "Admin")
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-main-bg">
+            <div class="admin-title">
+                <img src="~/Content/img-icon/setting.png" />
+                <h1>Blog Düzenle</h1>
+            </div>
+            @using (Html.BeginForm("BlogEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <h4 class="control-label col-md-2">Resim Değiştir</h4>
+                <div class="col-md-5">
+                    @Html.TextBox("uploadedImage", "", new { type = "File" })
+                    <img src="~/Content/blog-img/@Model.Id .jpg" style="width:4vw" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BlogTitle, "Başlık", htmlAttributes:
+               new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.BlogTitle, new
+               {
+                   htmlAttributes =
+                   new
+                        {
+                            @class = "form-control",
+                       @data_val = "true",
+                       @required = "required",
+                       @autocomplete = "off"
+                   }
+               })
+                    @Html.ValidationMessageFor(model => model.BlogTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BlogItem, "Yazı", htmlAttributes:
+                new { @class = "control-label col-md-2" })
+                <div class="col-md-11">
+                    @Html.TextAreaFor(model => model.BlogItem, new { @class = "form-control text-area" })
+                    @Html.ValidationMessageFor(model => model.BlogItem, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-right">
+                    <input type="submit" value="Kaydet" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+            }
+        </div>
+    </div>
+    <hr />
+
+</body>
+</html>

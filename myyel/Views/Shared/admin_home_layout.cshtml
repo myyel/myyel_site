@@ -1,0 +1,92 @@
+﻿@using myyel.Entity
+@model HomeEntity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title style="color:#626262">MyyeL Design</title>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Swiper.css" />
+    <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+
+</head>
+<body>
+    <!--navbar-->
+    <div class="menu-fixed">
+        <div class="menu-left">
+            <ul class="nav-logo2">
+                <li>
+                    <a href="#"><img src="~/Content/img/logo02.png" /></a>
+                </li>
+                <li>
+                    <div class="burger2" style="margin-top:20px">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-right">
+            <div class="nav-links2">
+                <div class="menu-right-1">
+                    @Html.ActionLink("Anasayfa", "Index", "Home")
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("Hakkımızda", "Index", "Home")
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("Projeler", "Project", "Home")
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("Kurs", "Index", "Home")
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("Blog", "Blog", "Home")
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("İletişim", "Index", "Home")
+                </div>
+                <div class="menu-right-2"></div>
+                <div class="menu-right-3">
+                    <a class="menu-btn-2" href="#">Kayıt ol</a>
+                    <a class="menu-btn" href="#">Giriş yap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    @RenderBody()
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 1,
+            loop: true,
+            centeredSlides: true,
+            grabCursor: true,
+            loopFillGroupWithBlank: true,
+            autoplay: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+</body>
+</html>

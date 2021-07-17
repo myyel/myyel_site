@@ -1,0 +1,109 @@
+﻿@model IEnumerable<myyel.Entity.BlogEntity>  
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title style="color:#626262">MyyeL Design</title>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Swiper.css" />
+    <link rel="stylesheet" href="~/Content/Admin-Site.css" />
+    <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+
+</head>
+<body>
+    <!--Admin_Navbar-->
+    <div class="admin-navbar">
+        <div class="admin-navbar-bg">
+            <div class="admin-navbar-left">
+                <a href="~/Home/Index"><img src="~/Content/img/logo-yan.png" /></a>
+            </div>
+            <div class="admin-navbar-right">
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Anasayfa", "Index", "Home")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Anasayfa İşlemleri", "HomeEdit", "Admin")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Kullanıcı İşlemleri", "Index", "Home")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Proje Resmi Ekle", "ProjectImage", "Admin")
+                </div>
+                <div class="admin-navbar-right-item">
+                    @Html.ActionLink("Blog İşlemleri", "Blog", "Admin" )
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-main-bg">
+            <div class="admin-title">
+                <img src="~/Content/img-icon/setting.png" />
+                <h1>Blog Listesi</h1>
+            </div>
+            <table class="table" style="width:100vw; margin-top:3vw;font-size:1vw;">
+                <tr>
+                    <th>
+                        Başlık
+                    </th>
+                    <th>
+                        İçerik
+                    </th>
+                    <th>
+                        <img src="~/Content/img-icon/setting.png" style="width:2vw; opacity:.8; margin-left:3vw;" />
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="tr-hov">
+                        <td>
+                            @if (item.BlogTitle.Length > 55)
+                            {
+                                @Html.DisplayFor(modelItem => item.BlogTitle.Substring(0, 55))<i>...</i>
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.BlogTitle)
+                            }
+                        </td>
+                        <td>
+                            @if (item.BlogItem.Length > 55)
+                            {
+                                @item.BlogItem.Substring(0, 55)<i>...</i>
+                            }
+                            else
+                            {
+                                @item.BlogItem
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Düzenle", "BlogEdit", new { id = item.Id }) |
+                            @Html.ActionLink("Detay", "BlogDetail", new { id = item.Id }) |
+                            @Html.ActionLink("Sil", "BlogDelete", new { id = item.Id }, new { onclick = "DeleteConfirm()" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function DeleteConfirm() {
+            confirm("Silmek istediğinizden emin misiniz?");
+        }
+    </script>
+</body>
+</html>

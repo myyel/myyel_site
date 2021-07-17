@@ -1,0 +1,283 @@
+﻿@using myyel.Entity
+@model IEnumerable<BlogEntity>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title style="color:#626262">MyyeL Design</title>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Swiper.css" />
+    <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+    <link href="~/Content/Admin-Site.css" rel="stylesheet" />
+    <link href="~/Content/ProjectSlider.css" rel="stylesheet" />
+    <link href="~/Content/lightbox.min.css" rel="stylesheet" />
+    <link href="~/Content/Home-Blog.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Content/lightbox-plus-jquery.min.js"></script>
+
+</head>
+<body>
+    <!--navbar-->
+    <div class="menu-fixed">
+        <div class="menu-left">
+            <ul class="nav-logo2">
+                <li>
+                    <a href="#"><img src="~/Content/img/logo02.png" /></a>
+                </li>
+                <li>
+                    <div class="burger2" style="margin-top:20px">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-right">
+            <div class="nav-links2">
+                <div class="menu-right-1">
+                    @Html.ActionLink("Anasayfa", "Index", "Home")
+                </div>
+                <div class="menu-right-1">
+                    <a href="#about">Hakkımızda</a>
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("Projeler", "Project", "Home")
+                </div>
+                <div class="menu-right-1">
+                    <a href="#kurs">Kurs</a>
+                </div>
+                <div class="menu-right-1">
+                    @Html.ActionLink("Blog", "Blog", "Home")
+                </div>
+                <div class="menu-right-1">
+                    <a href="#contact">İletişim</a>
+                </div>
+                <div class="menu-right-2"></div>
+                <div class="menu-right-3">
+                    <div class="menu-btn-2">Kayıt ol</div>
+                    <a class="menu-btn" href="/Account/Login">Giriş yap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Register-->
+    <div class="register-bg">
+        <div class="register-title">
+            <span>Kayıt ol</span>
+        </div>
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Ad: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="Name" required="required" autocomplete="off" name="Name" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Soyad: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Kulanıcı Adı: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Email: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Şifre: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Şifre Tekrar: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
+                </div>
+            </div>
+            <div class="register-form text-right">
+                <input type="submit" class="register-btn" />
+            </div>
+        }
+    </div>
+
+    <!--Blog-->
+    <div class="blog-bg">
+        <h1>BLOG</h1>
+        <div class="blog-slide">
+            <div class="swiper-container mySwiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in Model)
+                    {
+                        <div class="swiper-slide">
+                            <div class="blog-box">
+                                <div class="blog-img">
+                                    <a href="/Home/BlogDetail/@item.Id"><img src="~/Content/blog-img/@item.Id .jpg" alt="blog" /></a>
+                                </div>
+                                <div class="blog-detail">
+                                    <h5>@item.BlogTitle</h5>
+                                    <p>
+                                        @if (item.BlogItem.Length > 120)
+                                        {
+                                            @item.BlogItem.Substring(0, 120)<i>...</i>
+                                        }
+                                        else
+                                        {
+                                            @item.BlogItem
+                                        }
+                                    </p>
+                                    <a href="/Home/BlogDetail/@item.Id">Devamı</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Contact-->
+    <div id="contact" class="contact-bg">
+        <div class="contact-bg-inside">
+            <div class="contact-text">
+                <div class="contact-text-head">
+                    <h2>@ViewBag.homeEntity.ContactTitleA</h2>
+                    <p>
+                        @ViewBag.homeEntity.ContactTitleB
+                    </p>
+                </div>
+                <div class="contact-text-item">
+                    <ul>
+                        <li>
+                            <p style="color: #939191">Telefon</p>
+                            <h5>@ViewBag.homeEntity.ContactPhone</h5>
+                        </li>
+                        <li>
+                            <p style="color: #939191">Facebook</p>
+                            <h6>@ViewBag.homeEntity.ContactFacebook</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p style="color: #939191">Mail</p>
+                            <h6>@ViewBag.homeEntity.ContactMail</h6>
+                        </li>
+                        <li>
+                            <p style="color: #939191">İnstagram</p>
+                            <h6>@ViewBag.homeEntity.ContactInsta</h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-text-head">
+                    <h5>İLETİŞİM FORMU</h5>
+                </div>
+                @using (Html.BeginForm("Iletisim", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormName" required="required" autocomplete="off"
+                               name="FormName" placeholder="İSİM" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormSurname" required="required" autocomplete="off"
+                               name="FormSurname" placeholder="SOYİSİM" />
+                    </div>
+                    <div>
+                        <input type="tel" class="contact-form-item" id="FormTelefon" required="required"
+                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="[0-9]{10}"
+                               title="Başında 0 olmadan telefon numaranızı giriniz" />
+                    </div>
+                    <div>
+                        <input type="email" class="contact-form-item" id="FormMail" required="required" autocomplete="off"
+                               name="FormMail" placeholder="MAİL" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
+                               placeholder="MESAJ" />
+                    </div>
+                    <div>
+                        <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="footer-bg">
+        <div class="footer-inside">
+            <div class="footer-logo">
+                <img src="~/Content/img/@ViewBag.homeEntity.FooterImage .png" alt="Myyel Logo" />
+            </div>
+            <div class="footer-text">
+                <h2>@ViewBag.homeEntity.FooterText</h2>
+            </div>
+            <div class="footer-copy">
+                <p>&copy;2021-MyyeL Design Tüm Hakları Saklıdır</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Content/RegisterLogin.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 1,
+            loop: true,
+            centeredSlides: true,
+            grabCursor: true,
+            loopFillGroupWithBlank: true,
+            autoplay: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+</body>
+</html>

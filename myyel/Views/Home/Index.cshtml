@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/main_layout.cshtml";
+}
+
+
+
+<!--Slider-->
+<div class="back-bg">
+    <div class="row">
+    </div>
+    <div class="row slider">
+        <div class="col-lg-12">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div id="0" class="carousel-item active" data-id="0" data-slide-to="3">
+                        @Model.SliderItemA1.ToUpper()
+                        <br />
+                        @Model.SliderItemA2.ToUpper()
+                        <br />
+                        <a class="btn-kesfet" href="#about">KEŞFET</a>
+                    </div>
+                    <div id="1" class="carousel-item" data-id="1">
+                        @Model.SliderItemB1.ToUpper()
+                        <br />
+                        @Model.SliderItemB2.ToUpper()
+                        <br />
+                        <a class="btn-kesfet" href="#about">KEŞFET</a>
+                    </div>
+                    <div id="2" class="carousel-item" data-id="2">
+                        @Model.SliderItemC1.ToUpper()
+                        <br />
+                        @Model.SliderItemC2.ToUpper()
+                        <br />
+                        <a class="btn-kesfet" href="#about">KEŞFET</a>
+                    </div>
+                </div>
+
+                <div>
+                    <ul class="slider-nav">
+                        <li class="slider-nav-item" id="3">
+                            <a href="#carouselExampleSlidesOnly" data-slide-to="0">
+                                <p>
+                                    <span style="font-size:24px">01</span><br />
+                                    @Model.SliderItemA1.ToUpper()
+                                    <br />
+                                    @Model.SliderItemA2.ToUpper()
+                                    <br />
+                                </p>
+                            </a>
+                        </li>
+                        <li class="slider-nav-item" id="4">
+                            <a href="#carouselExampleSlidesOnly" data-slide-to="1">
+                                <p>
+                                    <span style="font-size:24px">02</span><br />
+                                    @Model.SliderItemB1.ToUpper()
+                                    <br />
+                                    @Model.SliderItemB2.ToUpper()
+                                    <br />
+                                </p>
+                            </a>
+                        </li>
+                        <li class="slider-nav-item2" id="5">
+                            <a href="#carouselExampleSlidesOnly" data-slide-to="2">
+                                <p>
+                                    <span style="font-size:24px">03</span><br />
+                                    @Model.SliderItemC1.ToUpper()
+                                    <br />
+                                    @Model.SliderItemC2.ToUpper()
+                                    <br />
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--About-->
+<div class="hak_bg" id="about">
+    <div class="hak-logo">
+        <video autoplay loop muted>
+            <source src="~/Content/img/myyel_design2.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <div class="hak-bas-metin">
+        <div class="hak-bas">
+            <hr /><p>Hakkımızda</p><hr />
+        </div>
+        <div class="hak-metin">
+            <p>
+                @Model.About1
+            </p>
+            <p>
+                @Model.About2
+            </p>
+        </div>
+        <div class="hak-buton">
+            <a href="/Home/Project" title="Projeler">Projeler</a>
+        </div>
+    </div>
+</div>
+
+<!--Projects-->
+<div class="project-group">
+    <div class="project-item">
+        <a href="/Home/Project">
+            <img class="project-img" src="~/Content/img/@Model.ProjectImage1 .jpg" alt="Yapı Tasarımları" />
+            <div class="project-yazi">
+                <h4 style="font-size:1.3vw">YAPI TASARIMLARI</h4>
+                <p style="font-size:0.85vw">DIŞ MİMARİ TASARIMLARI</p>
+            </div>
+        </a>
+    </div>
+    <div class="project-item">
+        <a href="/Home/Project">
+            <img class="project-img" src="~/Content/img/@Model.ProjectImage2 .jpg" alt="Ticari Alanlar" />
+            <div class="project-yazi">
+                <h4 style="font-size:1.3vw">TİCARİ ALANLAR</h4>
+                <p style="font-size:0.85vw">DIŞ MİMARİ TASARIMLARI</p>
+            </div>
+        </a>
+    </div>
+    <div class="project-item">
+        <a href="/Home/Project">
+            <img class="project-img" src="~/Content/img/@Model.ProjectImage3 .jpg" alt="Kat Planı" />
+            <div class="project-yazi">
+                <h4 style="font-size:1.3vw">KAT PLANLARI</h4>
+                <p style="font-size:0.85vw">DIŞ MİMARİ TASARIMLARI</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!--Advertisement-->
+<div class="ad-bg">
+    <div class="ad-title text-center">
+        <h3>@Model.AdTitle1</h3>
+        <p>
+            @Model.AdTitle2
+        </p>
+    </div>
+    <div class="ad-item">
+        <div class="ad-item-img">
+            <img src="~/Content/img/@Model.AdItemImageA .jpg" alt="advertisement" />
+        </div>
+        <div class="ad-item-text">
+            <h4>@Model.AdItemImageAText1</h4>
+            <p>
+                @Model.AdItemImageAText2
+            </p>
+        </div>
+    </div>
+    <div class="ad-item">
+        <div class="ad-item-text">
+            <h4>
+                @Model.AdItemImageBText1
+            </h4>
+            <p>
+                @Model.AdItemImageBText2
+            </p>
+        </div>
+        <div class="ad-item-img text-right">
+            <img src="~/Content/img/@Model.AdItemImageB .jpg" alt="advertisement" />
+        </div>
+    </div>
+    <div class="ad-item">
+        <div class="ad-item-img">
+            <img src="~/Content/img/@Model.AdItemImageC .jpg" alt="advertisement" />
+        </div>
+        <div class="ad-item-text">
+            <h4>
+                @Model.AdItemImageCText1
+            </h4>
+            <p>
+                @Model.AdItemImageCText2
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--Lesson-->
+<div class="lesson-bg" id="kurs">
+    <div class="lesson-bg-inside">
+        <div class="lesson-left">
+            <h3>@Model.LessonTitle</h3>
+            <img src="~/Content/img/3d-logo.jpg" alt="3DS Max" />
+        </div>
+        <div class="lesson-right">
+            <p>@Model.LessonItem1</p>
+            <p>@Model.LessonItem2</p>
+            <p>@Model.LessonItem3</p>
+            <p>@Model.LessonItem4</p>
+            <p>@Model.LessonItem5</p>
+            <p>@Model.LessonItem6</p>
+            <div class="lesson-buton">
+                <a href="#contact">ŞİMDİ İLETİŞİME GEÇ</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Blog-->
+<div class="blog-bg">
+    <h1>BLOG</h1>
+    <div class="blog-slide">
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in ViewBag.blog)
+                {
+                    <div class="swiper-slide">
+                        <div class="blog-box">
+                            <div class="blog-img">
+                                <a href="/Home/BlogDetail/@item.Id"><img src="~/Content/blog-img/@item.Id .jpg" alt="blog" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>@item.BlogTitle</h5>
+                                <p>
+                                    @if (item.BlogItem.Length > 120)
+                                    {
+                                        @item.BlogItem.Substring(0, 120)<i>...</i>
+                                    }
+                                    else
+                                    {
+                                        @item.BlogItem
+                                    }
+                                </p>
+                                <a href="/Home/BlogDetail/@item.Id">Devamı</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
