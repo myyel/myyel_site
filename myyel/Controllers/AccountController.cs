@@ -29,6 +29,12 @@ namespace myyel.Controllers
             roleManager = new RoleManager<ApplicationRole>(roleStore);
         }
 
+        public ActionResult Register()
+        {
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
+            return View();
+        }
+
         //todo: user control while registering
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -56,12 +62,12 @@ namespace myyel.Controllers
                 else
                 {
                     ModelState.AddModelError("RegisterError","Kayıt Oluşturulamadı..." );
-                    ViewBag.register = model;
-                    return RedirectToAction("Error", "Home");
+                    ViewBag.homeEntity = _context.HomeEntities.Find(1);
+                    return View(model);
                 }
             }
-            ViewBag.register = model;
-            return RedirectToAction("Index", "Home");
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
+            return View(model);
         }
 
         [HttpPost]
