@@ -1,4 +1,4 @@
-﻿@model myyel.Models.RegisterEntity
+﻿@model myyel.Models.LoginEntity
 
 @{
     Layout = null;
@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
     <title style="color:#626262">MyyeL Design</title>
     <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
     <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
@@ -196,42 +195,15 @@
     </div>
 
     <!--RegLog-->
+
     <div class="RegLog-bg">
         <div class="RegLog-main">
             <div class="RegLog-form">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <div style="border-bottom:.01vw solid #fff; margin-bottom:3vw; font-size:1.5vw;">
-                        Kayıt Ol
-                    </div>
-                    <div class="RegLog-form-inside">
-                        @Html.EditorFor(model => model.Name, new
-                        {
-                       htmlAttributes = new
-                            {
-                                @class = "RegLog-form-input",
-                                @placeholder = "İsim",
-                                @autocomplete = "off",
-                                @required = "required",
-                                @tabindex = "-1"
-                            }
-                         })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "RegLog-form-validation" })
-                    </div>
-
-                    <div class="RegLog-form-inside">
-                        @Html.EditorFor(model => model.Surname, new
-                   {
-                       htmlAttributes = new
-                       {
-                           @class = "RegLog-form-input",
-                           @placeholder = "Soyisim",
-                           @autocomplete = "off",
-                           @required = "required"
-                       }
-                   })
-                        @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "RegLog-form-validation" })
+                    <div style="border-bottom:.01vw solid #fff; margin-bottom:5vw; font-size:1.5vw;">
+                        Giriş Yap
                     </div>
 
                     <div class="RegLog-form-inside">
@@ -246,20 +218,6 @@
                        }
                    })
                         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "RegLog-form-validation" })
-                    </div>
-
-                    <div class="RegLog-form-inside">
-                        @Html.EditorFor(model => model.Email, new
-                   {
-                       htmlAttributes = new
-                       {
-                           @class = "RegLog-form-input",
-                           @placeholder = "Email",
-                           @autocomplete = "off",
-                           @required = "required"
-                       }
-                   })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "RegLog-form-validation" })
                     </div>
 
                     <div class="RegLog-form-inside">
@@ -278,35 +236,23 @@
                     </div>
 
                     <div class="RegLog-form-inside">
-                        @Html.EditorFor(model => model.RePassword, new
-                   {
-                       htmlAttributes = new
-                       {
-                           @class = "RegLog-form-input",
-                           @placeholder = "Şifre Tekrar",
-                           @autocomplete = "off",
-                           @type = "password",
-                           @required = "required"
-                       }
-                   })
-                        @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "RegLog-form-validation" })
-                    </div>
-
-                    <div class="RegLog-form-inside">
-                        <input type="checkbox" id="Confirm" name="Confirm" class="RegLog-form-validation" required="required" checked value="true" />
+                        <input type="checkbox" id="RememberMe" name="RememberMe" class="RegLog-form-validation" required="required" checked value="true" />
                         <span style="font-size:.8vw; color:#fff;">
-                            <a href="/Account/PrivatePolicy">
-                                Kullanım sözleşmesini
-                            </a>
-                            okudum.
+                            Beni Hatırla
                         </span>
-                        <div>
-                            <span class="RegLog-form-validation">@ViewData["check"]</span>
-                        </div>
+                        <span class="RegLog-form-inside-password">
+                            <a href="/Account/PasswordOperations">
+                                Şifremi Unuttum
+                            </a>
+                        </span>
                     </div>
 
                     <div class="RegLog-form-inside">
-                        <input type="submit" value="Kayıt Ol" class="RegLog-form-btn" />
+                        <input type="submit" value="Giriş Yap" class="RegLog-form-btn" />
+                    </div>
+
+                    <div class="RegLog-form-inside RegLog-form-validation" style="font-size:1vw!important;">
+                        @Html.ValidationSummary()
                     </div>
                 }
 
@@ -316,7 +262,6 @@
             </div>
         </div>
     </div>
-
 
     <!--Contact-->
     <div id="contact" class="contact-bg">
@@ -433,5 +378,8 @@
     </script>
 </body>
 </html>
+
+
+
 
 

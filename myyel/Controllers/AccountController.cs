@@ -29,24 +29,31 @@ namespace myyel.Controllers
             roleManager = new RoleManager<ApplicationRole>(roleStore);
         }
 
+        //todo: user control while registering
         public ActionResult Register()
         {
             ViewBag.homeEntity = _context.HomeEntities.Find(1);
             return View();
         }
 
-        //todo: user control while registering
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterEntity model)
         {
             if (ModelState.IsValid)
             {
+                if (model.Confirm==false)
+                {
+                    ViewBag.homeEntity = _context.HomeEntities.Find(1);
+                    ViewData["check"] = "Kullanım Szöleşmesini okuyup kabul ediniz";
+                    return View(model);
+                }
                 ApplicationUser user = new ApplicationUser();
                 user.Name = model.Name;
                 user.Surname = model.Surname;
                 user.Email = model.Email;
                 user.UserName = model.UserName;
+                user.LockoutEnabled = model.Confirm;
 
                 IdentityResult result = userManager.Create(user, model.Password);
 
@@ -61,13 +68,19 @@ namespace myyel.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("RegisterError","Kayıt Oluşturulamadı..." );
+                    ViewData["check"]="Kayıt Oluşturulamadı..." ;
                     ViewBag.homeEntity = _context.HomeEntities.Find(1);
                     return View(model);
                 }
             }
             ViewBag.homeEntity = _context.HomeEntities.Find(1);
             return View(model);
+        }
+
+        public ActionResult Login()
+        {
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
+            return View();
         }
 
         [HttpPost]
@@ -86,7 +99,7 @@ namespace myyel.Controllers
                     authProperties.IsPersistent = model.RememberMe;
                     authmanager.SignIn(authProperties, identityclaims);
 
-                    return RedirectToAction("Blog", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -94,7 +107,8 @@ namespace myyel.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
+            return View(model);
         }
 
         public ActionResult Logout()

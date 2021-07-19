@@ -59,17 +59,17 @@
                 @if (Request.IsAuthenticated)
                 {
     <div class="menu-right-2">@User.Identity.Name</div> if (User.Identity.Name == "myyel")
-                    {
-    <div class="menu-right-4">
-        <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
-        <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
-    </div> }
-                    else
-                    {
-    <div class="menu-right-4">
-        <a href="/Account/UserOperations" class="menu-btn-4">Kullanıcı<br />İşlemleri</a>
-        <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
-    </div>}
+    {
+<div class="menu-right-4">
+    <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
+    <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+</div> }
+else
+{
+<div class="menu-right-4">
+    <a href="/Account/UserOperations" class="menu-btn-4">Kullanıcı<br />İşlemleri</a>
+    <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+</div>}
 }
 else
 {
@@ -182,12 +182,12 @@ else
                                                                checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
                                                     </div>
                                                 </div>
-                                                                <div style="height:1vw">
-                                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                                                </div>
-                                                                                <div class="login-form text-right">
-                                                                                    <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
-                                                                                </div>}
+                                                                <div class="login-form">
+                                                                    <div class="login-form-title">
+                                                                        <a href="/Account/PasswordOperations">Şifremi unuttum</a>
+                                                                    </div>
+                                                                    <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
+                                                                </div>}
     </div>
 
     @RenderBody()

@@ -453,9 +453,21 @@ li {
     width: 5vw;
 }
 
-.login-form-input {
-    padding-right: .2vw;
+.login-form-title > a{
+    width:60%;
+    color:#939191;
+    font-size:.6vw;
+    margin-left:.5vw;
 }
+
+    .login-form-title > a:hover{
+        text-decoration:none;
+        color:#fff;
+    }
+
+    .login-form-input {
+        padding-right: .2vw;
+    }
 
     .login-form-input > input {
         margin: .6vw .1vw;
@@ -479,8 +491,8 @@ li {
     text-align: right;
     cursor: pointer;
     border-radius: .3vw;
-    margin-left: 10.5vw;
-    margin-top: .2vw;
+    margin-left: 5vw;
+    margin-top: .7vw;
     border: none;
     width: 3.5vw;
     height: 1.5vw;
