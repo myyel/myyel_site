@@ -118,5 +118,10 @@ namespace myyel.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
     }
 }
