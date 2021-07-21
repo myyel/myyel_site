@@ -357,31 +357,31 @@
                 </div>
                 @using (Html.BeginForm("Iletisim", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    @Html.AntiForgeryToken()
-                    <div>
-                        <input type="text" class="contact-form-item" id="FormName" required="required" autocomplete="off"
-                               name="FormName" placeholder="İSİM" />
-                    </div>
-                    <div>
-                        <input type="text" class="contact-form-item" id="FormSurname" required="required" autocomplete="off"
-                               name="FormSurname" placeholder="SOYİSİM" />
-                    </div>
-                    <div>
-                        <input type="tel" class="contact-form-item" id="FormTelefon" required="required"
-                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="[0-9]{10}"
-                               title="Başında 0 olmadan telefon numaranızı giriniz" />
-                    </div>
-                    <div>
-                        <input type="email" class="contact-form-item" id="FormMail" required="required" autocomplete="off"
-                               name="FormMail" placeholder="MAİL" />
-                    </div>
-                    <div>
-                        <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
-                               placeholder="MESAJ" />
-                    </div>
-                    <div>
-                        <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>
-                    </div>}
+            @Html.AntiForgeryToken()
+                            <div>
+                                <input type="text" class="contact-form-item" id="FormName" required="required" autocomplete="off"
+                                       name="FormName" placeholder="İSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen isminizi giriniz" />
+                            </div>
+                                            <div>
+                                                <input type="text" class="contact-form-item" id="FormSurname" required="required" autocomplete="off"
+                                                       name="FormSurname" placeholder="SOYİSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen soyisminizi giriniz" />
+                                            </div>
+                                                            <div>
+                                                                <input type="text" class="contact-form-item" id="FormTelefon" required="required"
+                                                                       autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="([(])([0-9]{3})\s?([)])([ ])([0-9]{3})\s?([-])([0-9]{4})\s?"
+                                                                       title="Başında 0 olmadan telefon numaranızı giriniz" />
+                                                            </div>
+                                                                            <div>
+                                                                                <input type="email" class="contact-form-item" id="FormMail" required="required" autocomplete="off"
+                                                                                       name="FormMail" placeholder="MAİL" pattern="@ViewData["patOfEmail"]" />
+                                                                            </div>
+                                                                                            <div>
+                                                                                                <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
+                                                                                                       placeholder="MESAJ" pattern="[a-zA-Z0-9ıİçÇşŞğĞÜüÖö]*" title="Lütfen sadece sayı ve harf kullanınız." />
+                                                                                            </div>
+                                                                                                            <div>
+                                                                                                                <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>
+                                                                                                            </div>}
             </div>
         </div>
     </div>

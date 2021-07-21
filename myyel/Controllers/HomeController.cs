@@ -15,6 +15,8 @@ namespace myyel.Controllers
 
         public ActionResult Index()
         {
+            string pat = "([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)";
+            ViewData["patOfEmail"] = pat;
             ViewBag.blog = _context.BlogEntities.ToList();
             return View(_context.HomeEntities.Where(i => i.Id == 1).FirstOrDefault());
         }

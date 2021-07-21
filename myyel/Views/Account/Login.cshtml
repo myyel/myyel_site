@@ -189,7 +189,10 @@
                            checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
                 </div>
             </div>
-            <div class="login-form text-right">
+            <div class="login-form">
+                <div class="login-form-title">
+                    <a href="/Account/PasswordOperations">Şifremi unuttum</a>
+                </div>
                 <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
             </div>}
     </div>
@@ -305,24 +308,24 @@
                     @Html.AntiForgeryToken()
                     <div>
                         <input type="text" class="contact-form-item" id="FormName" required="required" autocomplete="off"
-                               name="FormName" placeholder="İSİM" />
+                               name="FormName" placeholder="İSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen isminizi giriniz" />
                     </div>
                     <div>
                         <input type="text" class="contact-form-item" id="FormSurname" required="required" autocomplete="off"
-                               name="FormSurname" placeholder="SOYİSİM" />
+                               name="FormSurname" placeholder="SOYİSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen soyisminizi giriniz" />
                     </div>
                     <div>
-                        <input type="tel" class="contact-form-item" id="FormTelefon" required="required"
-                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="[0-9]{10}"
+                        <input type="text" class="contact-form-item" id="FormTelefon" required="required"
+                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="([(])([0-9]{3})\s?([)])([ ])([0-9]{3})\s?([-])([0-9]{4})\s?"
                                title="Başında 0 olmadan telefon numaranızı giriniz" />
                     </div>
                     <div>
                         <input type="email" class="contact-form-item" id="FormMail" required="required" autocomplete="off"
-                               name="FormMail" placeholder="MAİL" />
+                               name="FormMail" placeholder="MAİL" pattern="@ViewData["patOfEmail"]" />
                     </div>
                     <div>
                         <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
-                               placeholder="MESAJ" />
+                               placeholder="MESAJ" pattern="[a-zA-Z0-9ıİçÇşŞğĞÜüÖö]*" title="Lütfen sadece sayı ve harf kullanınız." />
                     </div>
                     <div>
                         <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>

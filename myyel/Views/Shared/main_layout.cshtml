@@ -234,24 +234,24 @@ else
     @Html.AntiForgeryToken()
                     <div>
                         <input type="text" class="contact-form-item" id="FormName" required="required" autocomplete="off"
-                               name="FormName" placeholder="İSİM" />
+                               name="FormName" placeholder="İSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen isminizi giriniz" />
                     </div>
                                     <div>
                                         <input type="text" class="contact-form-item" id="FormSurname" required="required" autocomplete="off"
-                                               name="FormSurname" placeholder="SOYİSİM" />
+                                               name="FormSurname" placeholder="SOYİSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen soyisminizi giriniz" />
                                     </div>
                                                     <div>
-                                                        <input type="tel" class="contact-form-item" id="FormTelefon" required="required"
-                                                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="[0-9]{10}"
+                                                        <input type="text" class="contact-form-item" id="FormTelefon" required="required"
+                                                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="([(])([0-9]{3})\s?([)])([ ])([0-9]{3})\s?([-])([0-9]{4})\s?"
                                                                title="Başında 0 olmadan telefon numaranızı giriniz" />
                                                     </div>
                                                                     <div>
                                                                         <input type="email" class="contact-form-item" id="FormMail" required="required" autocomplete="off"
-                                                                               name="FormMail" placeholder="MAİL" />
+                                                                               name="FormMail" placeholder="MAİL" pattern="@ViewData["patOfEmail"]"/>
                                                                     </div>
                                                                                     <div>
                                                                                         <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
-                                                                                               placeholder="MESAJ" />
+                                                                                               placeholder="MESAJ" pattern="[a-zA-Z0-9ıİçÇşŞğĞÜüÖö]*" title="Lütfen sadece sayı ve harf kullanınız." />
                                                                                     </div>
                                                                                                     <div>
                                                                                                         <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>
@@ -275,7 +275,7 @@ else
         </div>
     </footer>
 
-
+    
     <script src="~/Content/RegisterLogin.js"></script>
     <script src="~/Content/jquery.validate.min.js"></script>
     <script src="~/Content/jquery.validate.unobtrusive.min.js"></script>
@@ -305,6 +305,10 @@ else
             },
         });
 
+        document.getElementById('FormTelefon').addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
     </script>
 </body>
 </html>
