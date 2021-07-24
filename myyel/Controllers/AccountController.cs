@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace myyel.Controllers
 {
     public class AccountController : Controller
@@ -54,7 +55,7 @@ namespace myyel.Controllers
                 user.Email = model.Email;
                 user.UserName = model.UserName;
                 user.LockoutEnabled = model.Confirm;
-
+                
                 IdentityResult result = userManager.Create(user, model.Password);
 
                 if (result.Succeeded)
@@ -123,5 +124,6 @@ namespace myyel.Controllers
         {
             return View();
         }
+        
     }
 }
