@@ -4,76 +4,385 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UserOperations</title>
+    <meta charset="utf-8" />
+    <title style="color:#626262">MyyeL Design</title>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Swiper.css" />
+    <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+    <link href="~/Content/Admin-Site.css" rel="stylesheet" />
+    <link href="~/Content/ProjectSlider.css" rel="stylesheet" />
+    <link href="~/Content/lightbox.min.css" rel="stylesheet" />
+    <link href="~/Content/Home-Blog.css" rel="stylesheet" />
+    <link href="~/Content/RegLog.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Content/lightbox-plus-jquery.min.js"></script>
+
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>ApplicationUser</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <!--navbar-->
+    <div class="menu-fixed">
+        <div class="menu-left">
+            <ul class="nav-logo2">
+                <li>
+                    <a href="#"><img src="~/Content/img/logo02.png" /></a>
+                </li>
+                <li>
+                    <div class="burger2" style="margin-top:20px">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-right">
+            <div class="nav-links2">
+                <div class="menu-right-1">
+                    @Html.ActionLink("Anasayfa", "Index", "Home")
                 </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                <div class="menu-right-1">
+                    <a href="#about">Hakkımızda</a>
                 </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <div class="menu-right-1">
+                    @Html.ActionLink("Projeler", "Project", "Home")
                 </div>
-            </div>
-    
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PasswordHash, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
+                <div class="menu-right-1">
+                    <a href="#kurs">Kurs</a>
                 </div>
-            </div>
-    
-        
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                <div class="menu-right-1">
+                    @Html.ActionLink("Blog", "Blog", "Home")
                 </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                <div class="menu-right-1">
+                    <a href="#contact">İletişim</a>
                 </div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div id="ns" class="menu-right-2">@User.Identity.Name.ToString()</div>
+
+                    if (User.Identity.Name == "myyel")
+                    {
+                        <div class="menu-right-4">
+                            <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
+                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="menu-right-4">
+                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4">
+                                Kullanıcı<br />İşlemleri
+                            </a>
+                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="menu-right-2"></div>
+                    <div class="menu-right-3">
+                        <div class="menu-btn-2">Kayıt ol</div>
+                        <div class="menu-btn">Giriş yap</div>
+                    </div>
+                }
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
+
+    <!--Register-->
+    <div class="register-bg">
+        <div class="register-title">
+            <span>Kayıt ol</span>
+        </div>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Ad: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="Name" required="required" autocomplete="off" name="Name" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Soyad: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Kulanıcı Adı: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Email: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
+                    @if (@ViewBag.register != null)
+                    {
+                        <label class="text-danger">@ViewBag.register.Email</label>
+                    }
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Şifre: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                </div>
+            </div>
+            <div class="register-form">
+                <div class="register-form-title">
+                    <span>Şifre Tekrar: </span>
+                </div>
+                <div class="register-form-input">
+                    <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
+                </div>
+            </div>
+            <div class="register-form">
+                <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" />
+                <span style="font-size:.8vw; color:#fff;">
+                    <a href="/Account/PrivacyPolicy">
+                        Kullanım sözleşmesini
+                    </a>
+                    okudum.
+                </span>
+            </div>
+            <div class="register-form text-right">
+                <input type="submit" value="Oluştur" class="register-btn" />
+            </div>}
+    </div>
+
+    <!--Login-->
+    <div class="login-bg">
+        <div class="login-title">
+            <span>Giriş Yap</span>
+        </div>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="login-form">
+                <div class="login-form-title">
+                    <span>Kulanıcı Adı: </span>
+                </div>
+                <div class="login-form-input">
+                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                </div>
+            </div>
+            <div class="login-form">
+                <div class="login-form-title">
+                    <span>Şifre: </span>
+                </div>
+                <div class="login-form-input">
+                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                </div>
+            </div>
+            <div class="login-form">
+                <div class="login-form-title">
+                    <span>Beni Hatırla: </span>
+                </div>
+                <div>
+                    <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe"
+                           checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
+                </div>
+            </div>
+            <div class="login-form">
+                <div class="login-form-title">
+                    <a href="/Account/PasswordOperations">Şifremi unuttum</a>
+                </div>
+                <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
+            </div>}
+    </div>
+
+    <!--UserForm-->
+    <div class="RegLog-bg">
+        <div class="RegLog-main">
+            <div class="RegLog-form">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div style="border-bottom:.01vw solid #fff; margin:2vw 0; font-size:1.5vw; m">
+                        Kullanıcı İşlemleri
+                    </div>
+                    <div class="RegLog-form-inside">
+                        <div style="border-bottom:.01vw solid #939191">
+                            <span class="RegLog-form-inside-title">İsim: </span>
+                            <span class="RegLog-form-inside-text">@Model.Name </span>
+                        </div>
+                    </div>
+
+                    <div class="RegLog-form-inside">
+                        <div style="border-bottom:.01vw solid #939191">
+                            <span class="RegLog-form-inside-title" style="width:5vw!important">Soyisim: </span>
+                            <span class="RegLog-form-inside-text">@Model.Surname </span>
+                        </div>
+                    </div>
+
+                    <div class="RegLog-form-inside">
+                        <div style="border-bottom:.01vw solid #939191">
+                            <span class="RegLog-form-inside-title" style="width:5vw!important">Kullanıcı Adı: </span>
+                            <span class="RegLog-form-inside-text">@Model.UserName </span>
+                        </div>
+                    </div>
+
+                    <div class="RegLog-form-inside">
+                        <div style="border-bottom:.01vw solid #939191">
+                            <span class="RegLog-form-inside-title">Email: </span>
+                            <span class="RegLog-form-inside-text">@Model.Email </span>
+                            <button id="emailChange" class="RegLog-form-inside-btn" type="button" onclick="changeEmail();">
+                                Email Adresini Değiştir
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="RegLog-form-inside" style="opacity:0" id="emailInput">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "RegLog-form-input", @id = "emailedit", @placeholder = "Email", @autocomplete = "off", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "RegLog-form-validation" })
+                    </div>
+
+                    <div class="RegLog-form-inside" style="opacity:0" id="emailBtn">
+                        <input type="submit" value="Email Adresini Değiştir" class="RegLog-form-btn" />
+                    </div>
+                }
+                <div style="border-top:.01vw solid #939191" class="RegLog-form-inside text-right">
+                    <div style="height:1vw;"></div>
+                    <a href="UserPasswordChange" class="RegLog-form-inside-btn-2">Şifre İşlemleri</a>
+                </div>
+
+            </div>
+            <div class="RegLog-logo">
+                <img src="~/Content/img/logo01 kopya .png" />
+            </div>
+        </div>
+    </div>
+
+
+    <!--Contact-->
+    <div id="contact" class="contact-bg">
+        <div class="contact-bg-inside">
+            <div class="contact-text">
+                <div class="contact-text-head">
+                    <h2>@ViewBag.homeEntity.ContactTitleA</h2>
+                    <p>
+                        @ViewBag.homeEntity.ContactTitleB
+                    </p>
+                </div>
+                <div class="contact-text-item">
+                    <ul>
+                        <li>
+                            <p style="color: #939191">Telefon</p>
+                            <h5>@ViewBag.homeEntity.ContactPhone</h5>
+                        </li>
+                        <li>
+                            <p style="color: #939191">Facebook</p>
+                            <h6>@ViewBag.homeEntity.ContactFacebook</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p style="color: #939191">Mail</p>
+                            <h6>@ViewBag.homeEntity.ContactMail</h6>
+                        </li>
+                        <li>
+                            <p style="color: #939191">İnstagram</p>
+                            <h6>@ViewBag.homeEntity.ContactInsta</h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-text-head">
+                    <h5>İLETİŞİM FORMU</h5>
+                </div>
+                @using (Html.BeginForm("Iletisim", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormName" required="required" autocomplete="off"
+                               name="FormName" placeholder="İSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen isminizi giriniz" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormSurname" required="required" autocomplete="off"
+                               name="FormSurname" placeholder="SOYİSİM" pattern="[a-zA-ZıİçÇşŞğĞÜüÖö]*" title="Lütfen soyisminizi giriniz" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormTelefon" required="required"
+                               autocomplete="off" name="FormTelefon" placeholder="TELEFON" pattern="([(])([0-9]{3})\s?([)])([ ])([0-9]{3})\s?([-])([0-9]{4})\s?"
+                               title="Başında 0 olmadan telefon numaranızı giriniz" />
+                    </div>
+                    <div>
+                        <input type="email" class="contact-form-item" id="FormMail" required="required" autocomplete="off"
+                               name="FormMail" placeholder="MAİL" pattern="@ViewData["patOfEmail"]" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
+                               placeholder="MESAJ" pattern="[a-zA-Z0-9ıİçÇşŞğĞÜüÖö]*" title="Lütfen sadece sayı ve harf kullanınız." />
+                    </div>
+                    <div>
+                        <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>
+                    </div>}
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="footer-bg">
+        <div class="footer-inside">
+            <div class="footer-logo">
+                <img src="~/Content/img/@ViewBag.homeEntity.FooterImage .png" alt="Myyel Logo" />
+            </div>
+            <div class="footer-text">
+                <h2>@ViewBag.homeEntity.FooterText</h2>
+            </div>
+            <div class="footer-copy">
+                <p>&copy;2021-MyyeL Design Tüm Hakları Saklıdır</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Content/RegisterLogin.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        let changeBtn = document.querySelector("#emailBtn");
+        let changeInput = document.querySelector("#emailInput");
+        let emailedit = document.querySelector("#emailedit");
+
+        function changeEmail() {
+            if (changeBtn.style.opacity == "0") {
+                changeBtn.style.opacity = "1";
+                changeInput.style.opacity = "1";
+                emailedit.focus();
+                emailedit.select();
+            } else {
+                changeBtn.style.opacity = "0";
+                changeInput.style.opacity = "0";
+            }
+        };
+    </script>
 </body>
 </html>
+
+
+

@@ -65,18 +65,24 @@
                 </div>
                 @if (Request.IsAuthenticated)
                 {
-                    <div class="menu-right-2">@User.Identity.Name</div> if (User.Identity.Name == "myyel")
+                    <div id="ns" class="menu-right-2">@User.Identity.Name.ToString()</div>
+
+                    if (User.Identity.Name == "myyel")
                     {
                         <div class="menu-right-4">
                             <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
                             <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
-                        </div> }
+                        </div>
+                    }
                     else
                     {
                         <div class="menu-right-4">
-                            <a href="/Account/UserOperations" class="menu-btn-4">Kullanıcı<br />İşlemleri</a>
+                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4">
+                                Kullanıcı<br />İşlemleri
+                            </a>
                             <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
-                        </div>}
+                        </div>
+                    }
                 }
                 else
                 {
@@ -84,7 +90,8 @@
                     <div class="menu-right-3">
                         <div class="menu-btn-2">Kayıt ol</div>
                         <div class="menu-btn">Giriş yap</div>
-                    </div>}
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -129,7 +136,8 @@
                     <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
                     @if (@ViewBag.register != null)
                     {
-                        <label class="text-danger">@ViewBag.register.Email</label>}
+                        <label class="text-danger">@ViewBag.register.Email</label>
+                    }
                 </div>
             </div>
             <div class="register-form">
@@ -148,8 +156,14 @@
                     <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
                 </div>
             </div>
-            <div style="height:1vw">
-                <label class="text-danger">@ViewBag.hata</label>
+            <div class="register-form">
+                <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" />
+                <span style="font-size:.8vw; color:#fff;">
+                    <a href="/Account/PrivacyPolicy">
+                        Kullanım sözleşmesini
+                    </a>
+                    okudum.
+                </span>
             </div>
             <div class="register-form text-right">
                 <input type="submit" value="Oluştur" class="register-btn" />
@@ -201,7 +215,7 @@
 
     <div class="RegLog-bg">
         <div class="RegLog-main">
-            <div class="RegLog-form">
+            <div class="RegLog-form" style="margin-top:3vw;">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()

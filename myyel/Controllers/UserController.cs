@@ -11,18 +11,18 @@ using System.Web.Routing;
 
 namespace myyel.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         IdentityDataContext _identity = new IdentityDataContext();
+        DataContext _context = new DataContext();
 
         [HttpGet]
         public ActionResult UserOperations(string ad)
         {
             ad = User.Identity.Name;
-            if (ad == null)
+            if (ad == "")
             {
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Login", "Account");
             }
 
             ApplicationUser applicationUser = new ApplicationUser();
@@ -39,6 +39,7 @@ namespace myyel.Controllers
             applicationUser.Email = edituser.Email;
             applicationUser.PasswordHash = edituser.PasswordHash;
 
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
             return View(applicationUser);
         }
     }
