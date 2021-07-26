@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="IdentityServer3, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\IdentityServer3.2.6.3\lib\net45\IdentityServer3.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -171,7 +174,9 @@
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Identity\IdentityDataContext.cs" />
     <Compile Include="Identity\IdentityInitializer.cs" />
+    <Compile Include="Models\EmailChange.cs" />
     <Compile Include="Models\LoginEntity.cs" />
+    <Compile Include="Models\PasswordChange.cs" />
     <Compile Include="Models\RegisterEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -280,11 +285,13 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\PrivacyPolicy.cshtml" />
     <Content Include="Views\User\UserOperations.cshtml" />
+    <Content Include="Views\User\UserPasswordChange.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\blog-img\" />
     <Folder Include="Content\portfoy\" />
+    <Folder Include="Views\UserRepository\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -8,6 +8,11 @@ using myyel.Entity;
 using System.Data.Entity;
 using System.IO;
 using System.Web.Routing;
+using System.Data.Entity.Validation;
+using myyel.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Threading.Tasks;
 
 namespace myyel.Controllers
 {
@@ -15,6 +20,7 @@ namespace myyel.Controllers
     {
         IdentityDataContext _identity = new IdentityDataContext();
         DataContext _context = new DataContext();
+        private object userManager;
 
         [HttpGet]
         public ActionResult UserOperations(string ad)
@@ -37,10 +43,56 @@ namespace myyel.Controllers
             applicationUser.Surname = edituser.Surname;
             applicationUser.UserName = edituser.UserName;
             applicationUser.Email = edituser.Email;
-            applicationUser.PasswordHash = edituser.PasswordHash;
+
+            ViewBag.applicationuser = applicationUser;
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserOperations([Bind(Include = "Email")] EmailChange emailChange)
+        {
+            string name = User.Identity.Name;
+            string email = emailChange.Email;
+            ApplicationUser applicationUser = new ApplicationUser();
+            applicationUser = _identity.Users.Where(i => i.UserName == name).FirstOrDefault();
+
+            if (ModelState.IsValid)
+            {
+
+                applicationUser.Email = email;
+                _identity.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.applicationuser = applicationUser;
+            ViewBag.hata = "Geçerli bir email adresi giriniz";
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
+            return View(emailChange);
+        }
+
+        [HttpGet]
+        public ActionResult UserPasswordChange()
+        {
+            string name = User.Identity.Name;
+            if (name == "")
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var edituser = _identity.Users.Where(i => i.UserName == name).FirstOrDefault();
+
+            if (edituser == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
 
             ViewBag.homeEntity = _context.HomeEntities.Find(1);
-            return View(applicationUser);
+            return View();
         }
+
+
     }
 }

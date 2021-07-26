@@ -1,4 +1,4 @@
-﻿@model myyel.Identity.ApplicationUser
+﻿@model myyel.Models.EmailChange
 
 @{
     Layout = null;
@@ -219,34 +219,34 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <div style="border-bottom:.01vw solid #fff; margin:2vw 0; font-size:1.5vw; m">
+                    <div style="border-bottom:.01vw solid #939191; margin:2vw 0; font-size:1.5vw; m">
                         Kullanıcı İşlemleri
                     </div>
                     <div class="RegLog-form-inside">
                         <div style="border-bottom:.01vw solid #939191">
                             <span class="RegLog-form-inside-title">İsim: </span>
-                            <span class="RegLog-form-inside-text">@Model.Name </span>
+                            <span class="RegLog-form-inside-text">@ViewBag.applicationuser.Name </span>
                         </div>
                     </div>
 
                     <div class="RegLog-form-inside">
                         <div style="border-bottom:.01vw solid #939191">
                             <span class="RegLog-form-inside-title" style="width:5vw!important">Soyisim: </span>
-                            <span class="RegLog-form-inside-text">@Model.Surname </span>
+                            <span class="RegLog-form-inside-text">@ViewBag.applicationuser.Surname </span>
                         </div>
                     </div>
 
                     <div class="RegLog-form-inside">
                         <div style="border-bottom:.01vw solid #939191">
                             <span class="RegLog-form-inside-title" style="width:5vw!important">Kullanıcı Adı: </span>
-                            <span class="RegLog-form-inside-text">@Model.UserName </span>
+                            <span class="RegLog-form-inside-text">@ViewBag.applicationuser.UserName </span>
                         </div>
                     </div>
 
                     <div class="RegLog-form-inside">
                         <div style="border-bottom:.01vw solid #939191">
                             <span class="RegLog-form-inside-title">Email: </span>
-                            <span class="RegLog-form-inside-text">@Model.Email </span>
+                            <span class="RegLog-form-inside-text">@ViewBag.applicationuser.Email </span>
                             <button id="emailChange" class="RegLog-form-inside-btn" type="button" onclick="changeEmail();">
                                 Email Adresini Değiştir
                             </button>
@@ -264,7 +264,10 @@
                 }
                 <div style="border-top:.01vw solid #939191" class="RegLog-form-inside text-right">
                     <div style="height:1vw;"></div>
-                    <a href="UserPasswordChange" class="RegLog-form-inside-btn-2">Şifre İşlemleri</a>
+                    <a href="/User/UserPasswordChange" class="RegLog-form-inside-btn-2">Şifre İşlemleri</a>
+                </div>
+                <div class="RegLog-form-validation">
+                    @ViewBag.hata
                 </div>
 
             </div>
@@ -359,6 +362,9 @@
     </footer>
 
     <script src="~/Content/RegisterLogin.js"></script>
+    <script src="~/Content/jquery.validate.min.js"></script>
+    <script src="~/Content/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/jquery-1.10.2.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="~/Content/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

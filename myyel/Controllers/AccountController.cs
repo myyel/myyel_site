@@ -16,6 +16,7 @@ namespace myyel.Controllers
     public class AccountController : Controller
     {
         DataContext _context = new DataContext();
+        IdentityDataContext _identity = new IdentityDataContext();
         //todo: Title Ekle
         //todo: Validate operations 
         private UserManager<ApplicationUser> userManager;
@@ -123,7 +124,7 @@ namespace myyel.Controllers
         public ActionResult PrivacyPolicy()
         {
             return View();
-        }
-        
+        }       
+
     }
 }

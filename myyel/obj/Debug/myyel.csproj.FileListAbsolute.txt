@@ -198,3 +198,6 @@ D:\masaustu\myyel_site\myyel\obj\Debug\myyel.csproj.CoreCompileInputs.cache
 D:\masaustu\myyel_site\myyel\obj\Debug\myyel.csproj.CopyComplete
 D:\masaustu\myyel_site\myyel\obj\Debug\myyel.dll
 D:\masaustu\myyel_site\myyel\obj\Debug\myyel.pdb
+D:\masaustu\myyel_site\myyel\bin\IdentityServer3.dll
+D:\masaustu\myyel_site\myyel\bin\IdentityServer3.pdb
+D:\masaustu\myyel_site\myyel\bin\IdentityServer3.xml
