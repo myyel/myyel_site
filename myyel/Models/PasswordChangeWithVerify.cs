@@ -7,13 +7,8 @@ using System.Web;
 
 namespace myyel.Models
 {
-    public class PasswordChange
+    public class PasswordChangeWithVerify
     {
-        [System.Web.Mvc.AllowHtml]
-        [Required]
-        [DisplayName("Eski Şifre")]
-        [RegularExpression(@"^(?=.*[A-Za-zıİçÇşŞğĞÜüÖö])(?=.*\d)[A-Za-zıİçÇşŞğĞÜüÖö\d]{8,}$", ErrorMessage = "Şifrenizi yanlış girdiniz")]
-        public string ExPassword { get; set; }
         [System.Web.Mvc.AllowHtml]
         [Required]
         [DisplayName("Şifre")]

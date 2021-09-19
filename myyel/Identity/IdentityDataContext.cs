@@ -17,7 +17,7 @@ namespace myyel.Identity
         }
         public DbSet<RegisterEntity> registerEntities { get; set; }
         public DbSet<LoginEntity> loginEntities { get; set; }
-
+        public DbSet<ForgotPasswordEmail> forgotPasswordEmails { get; set; }
         public System.Data.Entity.DbSet<myyel.Identity.ApplicationRole> IdentityRoles { get; set; }
 
     }

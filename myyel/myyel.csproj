@@ -175,9 +175,12 @@
     <Compile Include="Identity\IdentityDataContext.cs" />
     <Compile Include="Identity\IdentityInitializer.cs" />
     <Compile Include="Models\EmailChange.cs" />
+    <Compile Include="Models\ForgotPasswordEmail.cs" />
     <Compile Include="Models\LoginEntity.cs" />
     <Compile Include="Models\PasswordChange.cs" />
+    <Compile Include="Models\PasswordChangeWithVerify.cs" />
     <Compile Include="Models\RegisterEntity.cs" />
+    <Compile Include="Models\Verify.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +289,9 @@
     <Content Include="Views\Account\PrivacyPolicy.cshtml" />
     <Content Include="Views\User\UserOperations.cshtml" />
     <Content Include="Views\User\UserPasswordChange.cshtml" />
+    <Content Include="Views\Account\PasswordOperations.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\PasswordChangeWithVerify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

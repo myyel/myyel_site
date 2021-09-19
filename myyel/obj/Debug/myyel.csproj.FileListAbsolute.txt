@@ -193,7 +193,6 @@ D:\masaustu\myyel_site\myyel\bin\System.Web.WebPages.Razor.xml
 D:\masaustu\myyel_site\myyel\bin\Newtonsoft.Json.xml
 D:\masaustu\myyel_site\myyel\bin\Antlr3.Runtime.pdb
 D:\masaustu\myyel_site\myyel\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\masaustu\myyel_site\myyel\obj\Debug\myyel.csprojAssemblyReference.cache
 D:\masaustu\myyel_site\myyel\obj\Debug\myyel.csproj.CoreCompileInputs.cache
 D:\masaustu\myyel_site\myyel\obj\Debug\myyel.csproj.CopyComplete
 D:\masaustu\myyel_site\myyel\obj\Debug\myyel.dll
@@ -201,3 +200,4 @@ D:\masaustu\myyel_site\myyel\obj\Debug\myyel.pdb
 D:\masaustu\myyel_site\myyel\bin\IdentityServer3.dll
 D:\masaustu\myyel_site\myyel\bin\IdentityServer3.pdb
 D:\masaustu\myyel_site\myyel\bin\IdentityServer3.xml
+D:\masaustu\myyel_site\myyel\obj\Debug\myyel.csproj.AssemblyReference.cache
