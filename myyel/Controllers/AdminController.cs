@@ -1,4 +1,5 @@
 ﻿using myyel.Entity;
+using myyel.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,11 +13,17 @@ namespace myyel.Controllers
     [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
+        IdentityDataContext _identity = new IdentityDataContext();
         DataContext _context = new DataContext();
 
         // GET: Admin
         public ActionResult Index()
         {
+            Counter counter = new Counter();
+            counter = _context.counters.Where(i => i.Id == 1).FirstOrDefault();
+            ViewBag.visitor = counter.Count.ToString();
+            ViewBag.userCount = _identity.Users.Count();
+            ViewBag.messageCount = _context.HomeFormEntites.Count();
             return View(_context.HomeEntities.Where(i => i.Id == 1).FirstOrDefault());
         }
 

@@ -2,9 +2,7 @@
 @model IEnumerable<BlogEntity>
 
 
-@{
-    Layout = null;
-}
+@{ Layout = null; }
 
 <!DOCTYPE html>
 <html>
@@ -64,33 +62,28 @@
                 </div>
                 @if (Request.IsAuthenticated)
                 {
-                    <div id="ns" class="menu-right-2">@User.Identity.Name.ToString()</div>
-
-                    if (User.Identity.Name == "myyel")
+    <div id="ns" class="menu-right-2">@User.Identity.Name.ToString()</div> if (User.Identity.Name == "myyel")
                     {
-                        <div class="menu-right-4">
-                            <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
-                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
-                        </div>
-                    }
+    <div class="menu-right-4">
+        <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
+        <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+    </div> }
                     else
                     {
-                        <div class="menu-right-4">
-                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4">
-                                Kullanıcı<br />İşlemleri
-                            </a>
-                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
-                        </div>
-                    }
+    <div class="menu-right-4">
+        <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4">
+            Kullanıcı<br />İşlemleri
+        </a>
+        <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+    </div> }
                 }
                 else
                 {
-                    <div class="menu-right-2"></div>
+    <div class="menu-right-2"></div>
                     <div class="menu-right-3">
                         <div class="menu-btn-2">Kayıt ol</div>
                         <div class="menu-btn">Giriş yap</div>
-                    </div>
-                }
+                    </div>}
             </div>
         </div>
     </div>
@@ -102,71 +95,70 @@
         </div>
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            @Html.AntiForgeryToken()
-            <div class="register-form">
-                <div class="register-form-title">
-                    <span>Ad: </span>
+@Html.AntiForgeryToken()
+                <div class="register-form">
+                    <div class="register-form-title">
+                        <span>Ad: </span>
+                    </div>
+                    <div class="register-form-input">
+                        <input type="text" id="Name" required="required" autocomplete="off" name="Name" />
+                    </div>
                 </div>
-                <div class="register-form-input">
-                    <input type="text" id="Name" required="required" autocomplete="off" name="Name" />
-                </div>
-            </div>
-            <div class="register-form">
-                <div class="register-form-title">
-                    <span>Soyad: </span>
-                </div>
-                <div class="register-form-input">
-                    <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" />
-                </div>
-            </div>
-            <div class="register-form">
-                <div class="register-form-title">
-                    <span>Kulanıcı Adı: </span>
-                </div>
-                <div class="register-form-input">
-                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
-                </div>
-            </div>
-            <div class="register-form">
-                <div class="register-form-title">
-                    <span>Email: </span>
-                </div>
-                <div class="register-form-input">
-                    <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
-                    @if (@ViewBag.register != null)
-                    {
-                        <label class="text-danger">@ViewBag.register.Email</label>
-                    }
-                </div>
-            </div>
-            <div class="register-form">
-                <div class="register-form-title">
-                    <span>Şifre: </span>
-                </div>
-                <div class="register-form-input">
-                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
-                </div>
-            </div>
-            <div class="register-form">
-                <div class="register-form-title">
-                    <span>Şifre Tekrar: </span>
-                </div>
-                <div class="register-form-input">
-                    <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
-                </div>
-            </div>
-            <div class="register-form">
-                <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" />
-                <span style="font-size:.8vw; color:#fff;">
-                    <a href="/Account/PrivacyPolicy">
-                        Kullanım sözleşmesini
-                    </a>
-                    okudum.
-                </span>
-            </div>
-            <div class="register-form text-right">
-                <input type="submit" value="Oluştur" class="register-btn" />
-            </div>}
+                                <div class="register-form">
+                                    <div class="register-form-title">
+                                        <span>Soyad: </span>
+                                    </div>
+                                    <div class="register-form-input">
+                                        <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" />
+                                    </div>
+                                </div>
+                                                <div class="register-form">
+                                                    <div class="register-form-title">
+                                                        <span>Kulanıcı Adı: </span>
+                                                    </div>
+                                                    <div class="register-form-input">
+                                                        <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                                                    </div>
+                                                </div>
+                                                                <div class="register-form">
+                                                                    <div class="register-form-title">
+                                                                        <span>Email: </span>
+                                                                    </div>
+                                                                    <div class="register-form-input">
+                                                                        <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
+                                                                        @if (@ViewBag.register != null)
+                                                                        {
+                                                        <label class="text-danger">@ViewBag.register.Email</label>}
+                                                                    </div>
+                                                                </div>
+                                                                                <div class="register-form">
+                                                                                    <div class="register-form-title">
+                                                                                        <span>Şifre: </span>
+                                                                                    </div>
+                                                                                    <div class="register-form-input">
+                                                                                        <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                                <div class="register-form">
+                                                                                                    <div class="register-form-title">
+                                                                                                        <span>Şifre Tekrar: </span>
+                                                                                                    </div>
+                                                                                                    <div class="register-form-input">
+                                                                                                        <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                                <div class="register-form">
+                                                                                                                    <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" />
+                                                                                                                    <span style="font-size:.8vw; color:#fff;">
+                                                                                                                        <a href="/Account/PrivacyPolicy">
+                                                                                                                            Kullanım sözleşmesini
+                                                                                                                        </a>
+                                                                                                                        okudum.
+                                                                                                                    </span>
+                                                                                                                </div>
+                                                                                                                                <div class="register-form text-right">
+                                                                                                                                    <input type="submit" value="Oluştur" class="register-btn" />
+                                                                                                                                </div>}
     </div>
 
     <!--Login-->
@@ -176,38 +168,38 @@
         </div>
         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
         {
-            @Html.AntiForgeryToken()
-            <div class="login-form">
-                <div class="login-form-title">
-                    <span>Kulanıcı Adı: </span>
+@Html.AntiForgeryToken()
+                <div class="login-form">
+                    <div class="login-form-title">
+                        <span>Kulanıcı Adı: </span>
+                    </div>
+                    <div class="login-form-input">
+                        <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                    </div>
                 </div>
-                <div class="login-form-input">
-                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
-                </div>
-            </div>
-            <div class="login-form">
-                <div class="login-form-title">
-                    <span>Şifre: </span>
-                </div>
-                <div class="login-form-input">
-                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
-                </div>
-            </div>
-            <div class="login-form">
-                <div class="login-form-title">
-                    <span>Beni Hatırla: </span>
-                </div>
-                <div>
-                    <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe"
-                           checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
-                </div>
-            </div>
-            <div class="login-form">
-                <div class="login-form-title">
-                    <a href="/Account/PasswordOperations">Şifremi unuttum</a>
-                </div>
-                <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
-            </div>}
+                                <div class="login-form">
+                                    <div class="login-form-title">
+                                        <span>Şifre: </span>
+                                    </div>
+                                    <div class="login-form-input">
+                                        <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                                    </div>
+                                </div>
+                                                <div class="login-form">
+                                                    <div class="login-form-title">
+                                                        <span>Beni Hatırla: </span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe"
+                                                               checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
+                                                    </div>
+                                                </div>
+                                                                <div class="login-form">
+                                                                    <div class="login-form-title">
+                                                                        <a href="/Account/PasswordOperations">Şifremi unuttum</a>
+                                                                    </div>
+                                                                    <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
+                                                                </div>}
     </div>
 
     <!--Blog-->
@@ -301,7 +293,7 @@
                                                                     </div>
                                                                                     <div>
                                                                                         <input type="text" class="contact-form-item" id="FormMesaj" required="required" name="FormMesaj" autocomplete="off"
-                                                                                               placeholder="MESAJ" pattern="[a-zA-Z0-9ıİçÇşŞğĞÜüÖö]*" title="Lütfen sadece sayı ve harf kullanınız." />
+                                                                                               placeholder="MESAJ" title="Lütfen mesajınızı giriniz." />
                                                                                     </div>
                                                                                                     <div>
                                                                                                         <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>

@@ -17,6 +17,7 @@ namespace myyel.Entity
         public DbSet<BlogEntity> BlogEntities { get; set; }
         public System.Data.Entity.DbSet<myyel.Entity.ProjectImageEntity> ProjectImageEntities { get; set; }
         public DbSet<HomeFormEntites> HomeFormEntites { get; set; }
+        public DbSet<Counter> counters { get; set; }
 
     }
 }

@@ -282,6 +282,18 @@ namespace myyel.Entity
             {
                 context.BlogEntities.Add(blog);
             }
+
+            var counts = new List<Counter>()
+            {
+                new Counter()
+                {
+                    Count=0
+                }
+            };
+            foreach(var count in counts)
+            {
+                context.counters.Add(count);
+            }
             context.SaveChanges();
 
             base.Seed(context);

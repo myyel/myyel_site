@@ -162,6 +162,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entity\BlogEntity.cs" />
+    <Compile Include="Entity\Counter.cs" />
     <Compile Include="Entity\DataContext.cs" />
     <Compile Include="Entity\DataInitializer.cs" />
     <Compile Include="Entity\HomeEntity.cs" />

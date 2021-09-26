@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace myyel.Controllers
 {
-    //todo: formValidates
     public class HomeController : Controller
     {
         DataContext _context = new DataContext();

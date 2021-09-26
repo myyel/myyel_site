@@ -28,7 +28,6 @@ namespace myyel.Entity
         public string FormMail { get; set; }
         [AllowHtml]
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9ıİçÇşŞğĞÜüÖö]*$", ErrorMessage = "Lütfen ismini giriniz")]
         public string FormMesaj { get; set; }
     }
 }
