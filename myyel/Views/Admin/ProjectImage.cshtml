@@ -34,7 +34,7 @@
                     @Html.ActionLink("Anasayfa İşlemleri", "HomeEdit", "Admin")
                 </div>
                 <div class="admin-navbar-right-item">
-                    @Html.ActionLink("Kullanıcı İşlemleri", "Index", "Home")
+                    @Html.ActionLink("Kullanıcı İşlemleri", "UserPage", "Admin")
                 </div>
                 <div class="admin-navbar-right-item">
                     @Html.ActionLink("Proje Resmi Ekle", "ProjectImage", "Admin")
@@ -79,7 +79,7 @@
                         {
                             <div class="project-image">
                                 <img src="~/Content/portfoy/@item.Id .jpg" />
-                                @Html.ActionLink("Sil", "ProjectDelete", new { id = item.Id }, new { onclick = "DeleteConfirm()" })
+                                @Html.ActionLink("Sil", "ProjectDelete", new { id = item.Id }, new { onclick = "return confirm('Silmek istediğinizden emin misiniz ? ')"})
                             </div>
                         }
                     }
@@ -88,10 +88,5 @@
         </div>
         <hr />
     </div>
-    <script>
-        function DeleteConfirm() {
-            confirm("Silmek istediğinizden emin misiniz?");
-        }
-    </script>
 </body>
 </html>

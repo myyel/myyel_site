@@ -18,6 +18,8 @@ namespace myyel.Entity
         public System.Data.Entity.DbSet<myyel.Entity.ProjectImageEntity> ProjectImageEntities { get; set; }
         public DbSet<HomeFormEntites> HomeFormEntites { get; set; }
         public DbSet<Counter> counters { get; set; }
+        public DbSet<SendMail> SendMails { get; set; }
+        public DbSet<SendMailPhoto> SendMailPhotos { get; set; }
 
     }
 }

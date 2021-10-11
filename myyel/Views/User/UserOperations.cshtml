@@ -254,7 +254,8 @@
                     </div>
 
                     <div class="RegLog-form-inside" style="opacity:0; margin-top:2vw;" id="emailInput">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "RegLog-form-input", @id = "emailedit", @placeholder = "Email", @autocomplete = "off", @required = "required" } })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "RegLog-form-input", 
+                       @id = "emailedit", @placeholder = "Email", @autocomplete = "off", @required = "required" } })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "RegLog-form-validation" })
                     </div>
 
@@ -265,7 +266,8 @@
             <div style="border-top:.01vw solid #939191" class="RegLog-form-inside">
                 <div style="height:1vw;"></div>
                 <a href="/User/UserPasswordChange" style="margin-right: 19vw; " class="RegLog-form-inside-btn-2">Şifre İşlemleri</a>                
-                <a href="/User/UserDelete" id="@ViewBag.applicationuser.UserName" style="background-color:red;" class="RegLog-form-inside-btn-2">Kullanıcı Sil</a>
+                <a href="/User/UserDelete" id="@ViewBag.applicationuser.UserName" style="background-color:red;" class="RegLog-form-inside-btn-2" 
+                   onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz?')">Kullanıcı Sil</a>
             </div>
                 <div class="RegLog-form-validation">
                     @ViewBag.hata

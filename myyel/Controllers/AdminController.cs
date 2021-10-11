@@ -5,22 +5,75 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
 namespace myyel.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         IdentityDataContext _identity = new IdentityDataContext();
         DataContext _context = new DataContext();
 
+
+        private bool SendEmailAll(List<ApplicationUser> applicationUsers, SendMail sendMail, List<SendMailPhoto> sendMailPhotos)
+        {
+            try
+            {
+                foreach (var item in applicationUsers)
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(item.Email);
+                    mail.From = new MailAddress("myyeldesign@gmail.com");
+                    mail.Subject = sendMail.Title;
+                    mail.Body = "< div style = 'width:70%; margin-left:2vw;' >"+
+  
+          "< h2 >"+sendMail.Title+" </ h2 >< hr />"+
+  
+          "< div style = 'margin:1vw 2vw;' >"+
+               "@foreach(var item in "+sendMailPhotos+")"+
+            "{"+
+                "< img src = '~/Content/mail_images/item.Id .jpg' style = 'width:100%' />"+
+            "}"+
+                    "</ div >" +
+                    "< h3 style = 'margin-top: 8vw; ' > Yaratıcı Tasarımlar </ h3 >" +
+
+                        "< p >" +sendMail.Content+"</ p >" +
+
+                        "< h4 style = 'margin-top:6vw;' > İrtibat </ h4 >" +
+                        "< p > Tel: 0 544 295 19 87 </ p >" +
+                        "< p > Mail: myyeldesign@gmail.com </ p >" +
+
+                        "</ div >";
+                            mail.IsBodyHtml = true;
+                    mail.SubjectEncoding = Encoding.Default;
+                    mail.BodyEncoding = Encoding.Default;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Credentials = new NetworkCredential("myyeldesign@gmail.com", "xefyzc11");
+                    smtp.Port = 587;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.hata = ex;
+                return false;
+            }
+
+        }
+
         // GET: Admin
         public ActionResult Index()
         {
             Counter counter = new Counter();
-            counter = _context.counters.Where(i => i.Id == 1).FirstOrDefault();
+            counter = _context.counters.FirstOrDefault();
             ViewBag.visitor = counter.Count.ToString();
             ViewBag.userCount = _identity.Users.Count();
             ViewBag.messageCount = _context.HomeFormEntites.Count();
@@ -309,6 +362,162 @@ namespace myyel.Controllers
                 System.IO.File.Delete(FolderPath);
             }
             return RedirectToAction("BlogList");
+        }
+
+        [HttpGet]
+        public ActionResult UserPage()
+        {
+            var homeEntity = _context.HomeEntities.Find(1);
+            ViewData["logo"] = homeEntity.FooterImage;
+            ViewData["text"] = homeEntity.FooterText;
+            return View(_identity.Users);
+        }
+
+        [HttpGet]
+        public ActionResult UserDelete(string id)
+        {
+            if (id == "")
+            {
+                ViewBag.homeEntity = _context.HomeEntities.Find(1);
+                return RedirectToAction("Error", "Home");
+            }
+            ApplicationUser applicationUser = _identity.Users.Find(id);
+            if (applicationUser == null)
+            {
+                ViewBag.homeEntity = _context.HomeEntities.Find(1);
+                return HttpNotFound();
+            }
+            _identity.Users.Remove(applicationUser);
+            _identity.SaveChanges();
+            return RedirectToAction("UserPage");
+        }
+        [HttpGet]
+        public ActionResult SendMail()
+        {
+            var homeEntity = _context.HomeEntities.Find(1);
+            ViewData["logo"] = homeEntity.FooterImage;
+            ViewData["text"] = homeEntity.FooterText;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SendMail([Bind(Include = "Id, Title, Content")] SendMail sendMail)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.SendMails.Add(sendMail);
+                _context.SaveChanges();
+                return RedirectToAction("SendMailPhoto");
+            }
+            return View(sendMail);
+        }
+        [HttpGet]
+        public ActionResult SendMailPhoto()
+        {
+            SendMail sendMail = new SendMail();
+            sendMail = _context.SendMails.ToList().LastOrDefault();
+
+
+            string title = sendMail.Title;
+            string content = sendMail.Content;
+
+            ViewData["title"] = title;
+            ViewData["content"] = content;
+            TempData["title"] = sendMail.Title;
+            TempData["content"] = sendMail.Content;
+            TempData["id"] = sendMail.Id;
+            return View(_context.SendMailPhotos.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult SendMailPhoto([Bind(Include = "Id")] SendMailPhoto sendMailPhoto,
+            HttpPostedFileBase uploadedImage)
+        {
+            if (uploadedImage == null)
+            {
+                ViewData["hata"] = "Yükleme İşlemi başarısız";
+                var homeEntity = _context.HomeEntities.Find(1);
+                ViewData["logo"] = homeEntity.FooterImage;
+                ViewData["text"] = homeEntity.FooterText;
+                return View(_context.SendMailPhotos.ToList());
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.SendMailPhotos.Add(sendMailPhoto);
+                    _context.SaveChanges();
+                }
+
+                string ImageFileName = sendMailPhoto.Id + " .jpg";
+                string FolderPath = Path.Combine(Server.MapPath("~/Content/mail_images"), ImageFileName);
+                if (System.IO.File.Exists(FolderPath))
+                {
+                    System.IO.File.Delete(FolderPath);
+                }
+
+                uploadedImage.SaveAs(FolderPath);
+                var homeEntity = _context.HomeEntities.Find(1);
+                ViewData["sonuc"] = "Yükleme işlemi başarılı";
+                ViewData["logo"] = homeEntity.FooterImage;
+                ViewData["text"] = homeEntity.FooterText;
+                SendMail sendMail = new SendMail();
+                sendMail.Content = TempData["content"].ToString();
+                sendMail.Title = TempData["title"].ToString();
+                sendMail.Id = Convert.ToInt32(TempData["id"]);
+                return RedirectToAction("SendMailPhoto", sendMail);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult SendMailPhotoDelete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            SendMailPhoto sendMailPhoto = _context.SendMailPhotos.Find(id);
+            if (sendMailPhoto == null)
+            {
+                return HttpNotFound();
+            }
+            _context.SendMailPhotos.Remove(sendMailPhoto);
+            _context.SaveChanges();
+            string ImageFileName = id.ToString() + " .jpg";
+            string FolderPath = Path.Combine(Server.MapPath("~/Content/mail_images"), ImageFileName);
+            if (System.IO.File.Exists(FolderPath))
+            {
+                System.IO.File.Delete(FolderPath);
+            }
+            SendMail sendMail = new SendMail();
+            sendMail.Content = TempData["content"].ToString();
+            sendMail.Title = TempData["title"].ToString();
+            sendMail.Id = Convert.ToInt32(TempData["id"]);
+            return RedirectToAction("SendMailPhoto", sendMail);
+        }
+
+        [HttpGet]
+        public ActionResult MailSended()
+        {
+            SendMail sendMail = new SendMail();
+            sendMail = _context.SendMails.ToList().LastOrDefault();
+            List<ApplicationUser> applicationUser = _identity.Users.ToList();
+            List<SendMailPhoto> sendMailPhotos = _context.SendMailPhotos.ToList();
+            bool result = SendEmailAll(applicationUser, sendMail, sendMailPhotos);
+            if (result)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+        }
+
+        public ActionResult MailView()
+        {
+            return View();
         }
     }
 }
