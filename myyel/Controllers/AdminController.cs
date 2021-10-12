@@ -1,12 +1,16 @@
-﻿using myyel.Entity;
+﻿using Microsoft.AspNetCore.Mvc.Formatters;
+using myyel.Entity;
 using myyel.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -30,27 +34,24 @@ namespace myyel.Controllers
                     mail.To.Add(item.Email);
                     mail.From = new MailAddress("myyeldesign@gmail.com");
                     mail.Subject = sendMail.Title;
-                    mail.Body = "< div style = 'width:70%; margin-left:2vw;' >"+
-  
-          "< h2 >"+sendMail.Title+" </ h2 >< hr />"+
-  
-          "< div style = 'margin:1vw 2vw;' >"+
-               "@foreach(var item in "+sendMailPhotos+")"+
-            "{"+
-                "< img src = '~/Content/mail_images/item.Id .jpg' style = 'width:100%' />"+
-            "}"+
-                    "</ div >" +
-                    "< h3 style = 'margin-top: 8vw; ' > Yaratıcı Tasarımlar </ h3 >" +
+                    mail.Body = "<div style = 'width:70%; margin-left:2vw;' >" +
 
-                        "< p >" +sendMail.Content+"</ p >" +
+          "<h2>" + sendMail.Title + " </h2><hr />" +
 
-                        "< h4 style = 'margin-top:6vw;' > İrtibat </ h4 >" +
-                        "< p > Tel: 0 544 295 19 87 </ p >" +
-                        "< p > Mail: myyeldesign@gmail.com </ p >" +
+                        "<p>" +sendMail.Content+"</p>" +
 
-                        "</ div >";
+                    "<h3 style = 'margin-top: 8vw; ' > Yaratıcı Tasarımlar </h3>" +
+                        "<h4 style = 'margin-top:6vw;' > İrtibat </h4>" +
+                        "<p> Tel: 0 544 295 19 87"+item.Id+" </p>" +
+                        "<p> Mail: myyeldesign@gmail.com </p>" +
+
+                        "</div>";
                             mail.IsBodyHtml = true;
                     mail.SubjectEncoding = Encoding.Default;
+                    for (int i = 1; i-1 < sendMailPhotos.Count(); i++)
+                    {
+                        mail.Attachments.Add(new Attachment("D://masaustu//myyel_site//myyel//Content//mail_images//"+i+" .jpg", MediaTypeNames.Application.Octet));
+                    }
                     mail.BodyEncoding = Encoding.Default;
                     SmtpClient smtp = new SmtpClient();
                     smtp.Credentials = new NetworkCredential("myyeldesign@gmail.com", "xefyzc11");
@@ -455,6 +456,7 @@ namespace myyel.Controllers
                 {
                     System.IO.File.Delete(FolderPath);
                 }
+
 
                 uploadedImage.SaveAs(FolderPath);
                 var homeEntity = _context.HomeEntities.Find(1);
