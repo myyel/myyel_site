@@ -30,28 +30,52 @@ namespace myyel.Controllers
             {
                 foreach (var item in applicationUsers)
                 {
-                    MailMessage mail = new MailMessage();
-                    mail.To.Add(item.Email);
-                    mail.From = new MailAddress("myyeldesign@gmail.com");
-                    mail.Subject = sendMail.Title;
-                    mail.Body = "<div style = 'width:70%; margin-left:2vw;' >" +
+                    string imgHtml = "";
+                    for (int i = 1; i-1 < sendMailPhotos.Count; i++) 
+                    {
+                        imgHtml += "<img src='D://masaustu//myyel_site//myyel//Content//mail_images//" + i + " .jpg' class='img-fluid'/>";
+                    };
+
+                    string htmlBody = "<div style = 'width:70%; margin-left:2vw;' >" +
 
           "<h2>" + sendMail.Title + " </h2><hr />" +
-
-                        "<p>" +sendMail.Content+"</p>" +
+          imgHtml +
+                        "<p>" + sendMail.Content + "</p>" +
 
                     "<h3 style = 'margin-top: 8vw; ' > Yaratıcı Tasarımlar </h3>" +
                         "<h4 style = 'margin-top:6vw;' > İrtibat </h4>" +
-                        "<p> Tel: 0 544 295 19 87"+item.Id+" </p>" +
+                        "<p> Tel: 0 544 295 19 87" + item.Id + " </p>" +
                         "<p> Mail: myyeldesign@gmail.com </p>" +
 
                         "</div>";
-                            mail.IsBodyHtml = true;
+
+                    AlternateView avHtml = AlternateView.CreateAlternateViewFromString(htmlBody,null,MediaTypeNames.Text.Html);
+
+                    MailMessage mail = new MailMessage();
+                    mail.AlternateViews.Add(avHtml);
+
+                    foreach (var i in sendMailPhotos)
+                    {
+                        LinkedResource inline = new LinkedResource("D:/masaustu/myyel_site/myyel/Content/mail_images/" + i.Id + " .jpg", MediaTypeNames.Image.Jpeg);
+                        inline.ContentId = Guid.NewGuid().ToString();
+                        avHtml.LinkedResources.Add(inline);
+                        Attachment att = new Attachment("D://masaustu//myyel_site//myyel//Content//mail_images//"+i.Id+" .jpg");
+                        att.ContentDisposition.Inline = true;
+                        mail.Attachments.Add(att);
+                    };
+
+
+
+                    mail.To.Add(item.Email);
+                    mail.From = new MailAddress("myyeldesign@gmail.com");
+                    mail.Subject = sendMail.Title;
+                    mail.Body = htmlBody;
+                    mail.IsBodyHtml = true;
                     mail.SubjectEncoding = Encoding.Default;
-                    for (int i = 1; i-1 < sendMailPhotos.Count(); i++)
+                    /*for (int i = 1; i-1 < sendMailPhotos.Count(); i++)
                     {
                         mail.Attachments.Add(new Attachment("D://masaustu//myyel_site//myyel//Content//mail_images//"+i+" .jpg", MediaTypeNames.Application.Octet));
-                    }
+                    }*/
                     mail.BodyEncoding = Encoding.Default;
                     SmtpClient smtp = new SmtpClient();
                     smtp.Credentials = new NetworkCredential("myyeldesign@gmail.com", "xefyzc11");
