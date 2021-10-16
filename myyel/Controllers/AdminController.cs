@@ -33,7 +33,7 @@ namespace myyel.Controllers
                     string imgHtml = "";
                     for (int i = 1; i-1 < sendMailPhotos.Count; i++) 
                     {
-                        imgHtml += "<img src='D://masaustu//myyel_site//myyel//Content//mail_images//" + i + " .jpg' class='img-fluid'/>";
+                        imgHtml += "<img src='~//Content//mail_images//" + i + " .jpg' class='img-fluid'/>";
                     };
 
                     string htmlBody = "<div style = 'width:70%; margin-left:2vw;' >" +
@@ -49,7 +49,7 @@ namespace myyel.Controllers
 
                         "</div>";
 
-                    AlternateView avHtml = AlternateView.CreateAlternateViewFromString(htmlBody,null,MediaTypeNames.Text.Html);
+                    /*AlternateView avHtml = AlternateView.CreateAlternateViewFromString(htmlBody,null,MediaTypeNames.Text.Html);
 
                     MailMessage mail = new MailMessage();
                     mail.AlternateViews.Add(avHtml);
@@ -62,10 +62,10 @@ namespace myyel.Controllers
                         Attachment att = new Attachment("D://masaustu//myyel_site//myyel//Content//mail_images//"+i.Id+" .jpg");
                         att.ContentDisposition.Inline = true;
                         mail.Attachments.Add(att);
-                    };
+                    };*/
 
 
-
+                    MailMessage mail = new MailMessage();
                     mail.To.Add(item.Email);
                     mail.From = new MailAddress("myyeldesign@gmail.com");
                     mail.Subject = sendMail.Title;
