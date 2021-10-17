@@ -23,7 +23,7 @@ namespace myyel.Controllers
         IdentityDataContext _identity = new IdentityDataContext();
         DataContext _context = new DataContext();
 
-
+        /*todo: İmg src yolu servera göre değişecek*/
         private bool SendEmailAll(List<ApplicationUser> applicationUsers, SendMail sendMail, List<SendMailPhoto> sendMailPhotos)
         {
             try
@@ -31,9 +31,9 @@ namespace myyel.Controllers
                 foreach (var item in applicationUsers)
                 {
                     string imgHtml = "";
-                    for (int i = 1; i-1 < sendMailPhotos.Count; i++) 
+                    foreach (var i in sendMailPhotos) 
                     {
-                        imgHtml += "<img src='~//Content//mail_images//" + i + " .jpg' class='img-fluid'/>";
+                        imgHtml += "<img src='https://localhost:44329/Admin/SendMailPhotoDetails/" + i.Id + " .jpg' class='img-fluid'/>";
                     };
 
                     string htmlBody = "<div style = 'width:70%; margin-left:2vw;' >" +
@@ -44,7 +44,7 @@ namespace myyel.Controllers
 
                     "<h3 style = 'margin-top: 8vw; ' > Yaratıcı Tasarımlar </h3>" +
                         "<h4 style = 'margin-top:6vw;' > İrtibat </h4>" +
-                        "<p> Tel: 0 544 295 19 87" + item.Id + " </p>" +
+                        "<p> Tel: 0 544 295 19 87 </p>" +
                         "<p> Mail: myyeldesign@gmail.com </p>" +
 
                         "</div>";
@@ -493,6 +493,27 @@ namespace myyel.Controllers
                 sendMail.Id = Convert.ToInt32(TempData["id"]);
                 return RedirectToAction("SendMailPhoto", sendMail);
             }
+        }
+
+        /* Mail Body içerinde image kullanabilmek için oluşturuldu*/
+        [HttpGet]
+        public ActionResult SendMailPhotoDetails(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            SendMailPhoto sendMailPhoto = _context.SendMailPhotos.Find(id);
+            if (sendMailPhoto == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var homeEntity = _context.HomeEntities.Find(1);
+            ViewData["logo"] = homeEntity.FooterImage;
+            ViewData["text"] = homeEntity.FooterText;
+
+            return View(sendMailPhoto);
         }
 
         [HttpGet]

@@ -425,6 +425,7 @@
     <Content Include="Views\Admin\SendMail.cshtml" />
     <Content Include="Views\Admin\SendMailPhoto.cshtml" />
     <Content Include="Views\Admin\MailView.cshtml" />
+    <Content Include="Views\Admin\SendMailPhotoDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
