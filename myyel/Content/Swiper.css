@@ -141,7 +141,7 @@
     }
 
 .swiper-container-horizontal.swiper-container-css-mode > .swiper-wrapper {
-    scroll-snap-type: x mandatory
+    scroll-snap-type: x mandatory;
 }
 
 .swiper-container-vertical.swiper-container-css-mode > .swiper-wrapper {
@@ -381,6 +381,7 @@ button.swiper-pagination-bullet {
     border-radius: 10px;
     position: relative;
     -ms-touch-action: none;
+    touch-action:none;
     background: rgba(0,0,0,.1)
 }
 

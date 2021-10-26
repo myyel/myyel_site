@@ -2,10 +2,17 @@
 @model HomeEntity
 
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title style="color:#626262">MyyeL Design</title>
+    <title style="color:#626262">MyyeL Design - Mimari Tasarım</title>
     <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="mimari, tasarım, model, modelleme, yapı, inşaat, modern, yapı, mimari tasarım,
+          mimari modelleme, yapı tasarım, dizayn, inşat, myyel, myyel design, design, building, 3d Mimari Modelleme, animasyon,
+          sunum, üç boyutlu yapılar" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="mimari, tasarım, model, modelleme, yapı, inşaat, modern, yapı, mimari tasarım,
+          mimari modelleme, yapı tasarım, dizayn, inşat, myyel, myyel design, design, building, 3d Mimari Modelleme, animasyon,
+          sunum, üç boyutlu yapılar" />
     <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="~/Content/Site.css" rel="stylesheet" />
@@ -15,7 +22,6 @@
     <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
     <link href="~/Content/Admin-Site.css" rel="stylesheet" />
     <link href="~/Content/ProjectSlider.css" rel="stylesheet" />
-    <link href="~/Content/lightbox.min.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Content/lightbox-plus-jquery.min.js"></script>
 
 </head>
@@ -25,10 +31,10 @@
         <div class="menu-left">
             <ul class="nav-logo2">
                 <li>
-                    <a href="#"><img src="~/Content/img/logo02.png" /></a>
+                    <a href="#"><img src="~/Content/img/logo02.png" alt="logo" /></a>
                 </li>
                 <li>
-                    <div class="burger2" style="margin-top:20px">
+                    <div class="burger2" style="margin-top:20px" alt="slide-navbar" title="Menu">
                         <div class="line1"></div>
                         <div class="line2"></div>
                         <div class="line3"></div>
@@ -38,42 +44,42 @@
         </div>
         <div class="menu-right">
             <div class="nav-links2">
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Anasayfa" alt="MainPage">
                     @Html.ActionLink("Anasayfa", "Index", "Home")
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Hakkımızda" alt="About">
                     <a href="#about">Hakkımızda</a>
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Projeler" alt="Projects">
                     @Html.ActionLink("Projeler", "Project", "Home")
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Kurs" alt="Course">
                     <a href="#kurs">Kurs</a>
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Blog" alt="Blogs">
                     @Html.ActionLink("Blog", "Blog", "Home")
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="İletişim" alt="Contact">
                     <a href="#contact">İletişim</a>
                 </div>
                 @if (Request.IsAuthenticated)
                 {
-                    <div id="ns" class="menu-right-2">@User.Identity.Name.ToString()</div>
+                    <div id="ns" alt="User Name" class="menu-right-2">@User.Identity.Name.ToString()</div>
 
                     if (User.Identity.Name == "myyel")
                     {
                         <div class="menu-right-4">
-                            <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
-                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+                            <a href="/Admin" class="menu-btn-4" alt="Admin Management">Yönetim<br />İşlemleri</a>
+                            <a href="/Account/Logout" class="menu-btn-3" alt="Log out">Çıkış yap</a>
                         </div>
                     }
                     else
                     {
                         <div class="menu-right-4">
-                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4">
+                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4" alt="Account Management">
                                 Kullanıcı<br />İşlemleri
                             </a>
-                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+                            <a href="/Account/Logout" class="menu-btn-3" alt="Log out">Çıkış yap</a>
                         </div>
                     }
                 }
@@ -81,8 +87,8 @@
                 {
                     <div class="menu-right-2"></div>
                     <div class="menu-right-3">
-                        <div class="menu-btn-2">Kayıt ol</div>
-                        <div class="menu-btn">Giriş yap</div>
+                        <div class="menu-btn-2" alt="Register">Kayıt ol</div>
+                        <div class="menu-btn" alt="Login">Giriş yap</div>
                     </div>
                 }
             </div>
@@ -92,65 +98,65 @@
     <!--Register-->
     <div class="register-bg">
         <div class="register-title">
-            <span>Kayıt ol</span>
+            <span alt="Register Text">Kayıt ol</span>
         </div>
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-            <div class="register-form">
+            <div class="register-form" alt="Name input">
                 <div class="register-form-title">
                     <span>Ad: </span>
                 </div>
                 <div class="register-form-input">
-                    <input type="text" id="Name" required="required" autocomplete="off" name="Name" />
+                    <input type="text" id="Name" required="required" autocomplete="off" name="Name"title="Ad" />
                 </div>
             </div>
-            <div class="register-form">
+            <div class="register-form" alt="input surname">
                 <div class="register-form-title">
                     <span>Soyad: </span>
                 </div>
                 <div class="register-form-input">
-                    <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" />
+                    <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" title="Soyad"/>
                 </div>
             </div>
-            <div class="register-form">
+            <div class="register-form" alt="input username">
                 <div class="register-form-title">
                     <span>Kulanıcı Adı: </span>
                 </div>
                 <div class="register-form-input">
-                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                    <input type="text" id="UserNameReg" required="required" autocomplete="off" name="UserName" title="Kullanıcı Adı" />
                 </div>
             </div>
-            <div class="register-form">
+            <div class="register-form" alt="input email">
                 <div class="register-form-title">
                     <span>Email: </span>
                 </div>
                 <div class="register-form-input">
-                    <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
+                    <input type="text" id="Email" required="required" autocomplete="off" name="Email" title="Email" />
                     @if (@ViewBag.register != null)
                     {
                         <label class="text-danger">@ViewBag.register.Email</label>
                     }
                 </div>
             </div>
-            <div class="register-form">
+            <div class="register-form" alt="input password">
                 <div class="register-form-title">
                     <span>Şifre: </span>
                 </div>
                 <div class="register-form-input">
-                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                    <input type="password" id="PasswordReg" required="required" autocomplete="off" name="Password" title="Şifre"/>
                 </div>
             </div>
-            <div class="register-form">
+            <div class="register-form" alt="input repassword">
                 <div class="register-form-title">
                     <span>Şifre Tekrar: </span>
                 </div>
                 <div class="register-form-input">
-                    <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
+                    <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" title="Şifre Tekrar" />
                 </div>
             </div>
-            <div class="register-form">
-                <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" />
+            <div class="register-form" alt="confirm privacy policy">
+                <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" title="Kullanım Sözleşmesi" />
                 <span style="font-size:.8vw; color:#fff;">
                     <a href="/Account/PrivacyPolicy">
                         Kullanım sözleşmesini
@@ -171,33 +177,33 @@
         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            <div class="login-form">
+            <div class="login-form" alt="login input username">
                 <div class="login-form-title">
                     <span>Kulanıcı Adı: </span>
                 </div>
                 <div class="login-form-input">
-                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                    <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" title="Kullanıcı Adı"/>
                 </div>
             </div>
-            <div class="login-form">
+            <div class="login-form" alt="login input password">
                 <div class="login-form-title">
                     <span>Şifre: </span>
                 </div>
                 <div class="login-form-input">
-                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                    <input type="password" id="Password" required="required" autocomplete="off" name="Password" title="Şifre"/>
                 </div>
             </div>
-            <div class="login-form">
+            <div class="login-form" alt="login input remember me">
                 <div class="login-form-title">
                     <span>Beni Hatırla: </span>
                 </div>
                 <div>
-                    <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe"
+                    <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe" title="Beni Hatırla"
                            checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
                 </div>
             </div>
             <div class="login-form">
-                <div class="login-form-title">
+                <div class="login-form-title" alt="forget password">
                     <a href="/Account/PasswordOperations">Şifremi unuttum</a>
                 </div>
                 <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
@@ -211,8 +217,8 @@
         <div class="contact-bg-inside">
             <div class="contact-text">
                 <div class="contact-text-head">
-                    <h2>@Model.ContactTitleA</h2>
-                    <p>
+                    <h2 alt="Contact title">@Model.ContactTitleA</h2>
+                    <p alt="contact content">
                         @Model.ContactTitleB
                     </p>
                 </div>
@@ -220,26 +226,26 @@
                     <ul>
                         <li>
                             <p style="color: #939191">Telefon</p>
-                            <h5>@Model.ContactPhone</h5>
+                            <h5 alt="contact phone number">@Model.ContactPhone</h5>
                         </li>
                         <li>
                             <p style="color: #939191">Facebook</p>
-                            <h6>@Model.ContactFacebook</h6>
+                            <h6 alt="contact facebook">@Model.ContactFacebook</h6>
                         </li>
                     </ul>
                     <ul>
                         <li>
                             <p style="color: #939191">Mail</p>
-                            <h6>@Model.ContactMail</h6>
+                            <h6 alt="contact email">@Model.ContactMail</h6>
                         </li>
                         <li>
                             <p style="color: #939191">İnstagram</p>
-                            <h6>@Model.ContactInsta</h6>
+                            <h6 alt="contact instagram">@Model.ContactInsta</h6>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="contact-form">
+            <div class="contact-form" alt="contact form">
                 <div class="contact-text-head">
                     <h5>İLETİŞİM FORMU</h5>
                 </div>
@@ -288,7 +294,6 @@
             </div>
         </div>
     </footer>
-
 
     <script src="~/Content/RegisterLogin.js"></script>
     <script src="~/Content/jquery.validate.min.js"></script>

@@ -203,6 +203,7 @@ namespace myyel.Controllers
             }
 
             ViewBag.hata = "Kullanıcı Bulunamadı...";
+            ViewBag.homeEntity = _context.HomeEntities.Find(1);
             return View();
         }
         [HttpGet]

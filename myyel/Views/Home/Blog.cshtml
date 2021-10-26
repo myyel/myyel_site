@@ -5,7 +5,7 @@
 @{ Layout = null; }
 
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <title style="color:#626262">MyyeL Design</title>
     <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
@@ -20,7 +20,6 @@
     <link href="~/Content/ProjectSlider.css" rel="stylesheet" />
     <link href="~/Content/lightbox.min.css" rel="stylesheet" />
     <link href="~/Content/Home-Blog.css" rel="stylesheet" />
-    <script type="text/javascript" src="~/Content/lightbox-plus-jquery.min.js"></script>
 
 </head>
 <body>
@@ -29,7 +28,7 @@
         <div class="menu-left">
             <ul class="nav-logo2">
                 <li>
-                    <a href="#"><img src="~/Content/img/logo02.png" /></a>
+                    <a href="#"><img src="~/Content/img/logo02.png" title="logo" /></a>
                 </li>
                 <li>
                     <div class="burger2" style="margin-top:20px">
@@ -91,64 +90,64 @@
     <!--Register-->
     <div class="register-bg">
         <div class="register-title">
-            <span>Kayıt ol</span>
+            <span alt="Register Text">Kayıt ol</span>
         </div>
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
 @Html.AntiForgeryToken()
-                <div class="register-form">
+                <div class="register-form" alt="Name input">
                     <div class="register-form-title">
                         <span>Ad: </span>
                     </div>
                     <div class="register-form-input">
-                        <input type="text" id="Name" required="required" autocomplete="off" name="Name" />
+                        <input type="text" id="NameReg" required="required" autocomplete="off" name="Name" title="Ad" />
                     </div>
                 </div>
-                                <div class="register-form">
+                                <div class="register-form" alt="input surname">
                                     <div class="register-form-title">
                                         <span>Soyad: </span>
                                     </div>
                                     <div class="register-form-input">
-                                        <input type="text" id="Surname" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" />
+                                        <input type="text" id="SurnameReg" required="required" autocomplete="off" name="Surname" formaction="/Account/Register" title="Soyad" />
                                     </div>
                                 </div>
-                                                <div class="register-form">
+                                                <div class="register-form" alt="input username">
                                                     <div class="register-form-title">
                                                         <span>Kulanıcı Adı: </span>
                                                     </div>
                                                     <div class="register-form-input">
-                                                        <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                                                        <input type="text" id="UserNameReg" required="required" autocomplete="off" name="UserName" title="Kullanıcı Adı" />
                                                     </div>
                                                 </div>
-                                                                <div class="register-form">
+                                                                <div class="register-form" alt="input email">
                                                                     <div class="register-form-title">
                                                                         <span>Email: </span>
                                                                     </div>
                                                                     <div class="register-form-input">
-                                                                        <input type="text" id="Email" required="required" autocomplete="off" name="Email" />
+                                                                        <input type="text" id="EmailReg" required="required" autocomplete="off" name="Email" title="Email" />
                                                                         @if (@ViewBag.register != null)
                                                                         {
                                                         <label class="text-danger">@ViewBag.register.Email</label>}
                                                                     </div>
                                                                 </div>
-                                                                                <div class="register-form">
+                                                                                <div class="register-form" alt="input password">
                                                                                     <div class="register-form-title">
                                                                                         <span>Şifre: </span>
                                                                                     </div>
                                                                                     <div class="register-form-input">
-                                                                                        <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                                                                                        <input type="password" id="PasswordReg" required="required" autocomplete="off" name="Password" title="Şifre" />
                                                                                     </div>
                                                                                 </div>
-                                                                                                <div class="register-form">
+                                                                                                <div class="register-form" alt="input repassword">
                                                                                                     <div class="register-form-title">
                                                                                                         <span>Şifre Tekrar: </span>
                                                                                                     </div>
                                                                                                     <div class="register-form-input">
-                                                                                                        <input type="password" id="RePassword" required="required" autocomplete="off" name="RePassword" />
+                                                                                                        <input type="password" id="RePasswordReg" required="required" autocomplete="off" name="RePassword" title="Şifre Tekrar" />
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                                <div class="register-form">
-                                                                                                                    <input type="checkbox" id="Confirm" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" />
+                                                                                                                <div class="register-form" alt="confirm privacy policy">
+                                                                                                                    <input type="checkbox" id="ConfirmReg" name="Confirm" required="required" checked value="true" style="margin:.4vw 1vw" title="Kullanım Sözleşmesi" />
                                                                                                                     <span style="font-size:.8vw; color:#fff;">
                                                                                                                         <a href="/Account/PrivacyPolicy">
                                                                                                                             Kullanım sözleşmesini
@@ -169,33 +168,33 @@
         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
         {
 @Html.AntiForgeryToken()
-                <div class="login-form">
+                <div class="login-form" alt="login input username">
                     <div class="login-form-title">
                         <span>Kulanıcı Adı: </span>
                     </div>
                     <div class="login-form-input">
-                        <input type="text" id="UserName" required="required" autocomplete="off" name="UserName" />
+                        <input type="text" id="UserNameLog" required="required" autocomplete="off" name="UserName" title="Kullanıcı Adı" />
                     </div>
                 </div>
-                                <div class="login-form">
+                                <div class="login-form" alt="login input password">
                                     <div class="login-form-title">
                                         <span>Şifre: </span>
                                     </div>
                                     <div class="login-form-input">
-                                        <input type="password" id="Password" required="required" autocomplete="off" name="Password" />
+                                        <input type="password" id="PasswordLog" required="required" autocomplete="off" name="Password" title="Şifre" />
                                     </div>
                                 </div>
-                                                <div class="login-form">
+                                                <div class="login-form" alt="login input remember me">
                                                     <div class="login-form-title">
                                                         <span>Beni Hatırla: </span>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe"
+                                                        <input type="checkbox" id="RememberMe" value="true" autocomplete="off" name="RememberMe" title="Beni Hatırla"
                                                                checked="checked" style="margin:.95vw 0 0 .3vw; width:.7vw;" />
                                                     </div>
                                                 </div>
                                                                 <div class="login-form">
-                                                                    <div class="login-form-title">
+                                                                    <div class="login-form-title" alt="forget password">
                                                                         <a href="/Account/PasswordOperations">Şifremi unuttum</a>
                                                                     </div>
                                                                     <input type="submit" value="Giriş Yap" class="login-btn" formmethod="post" />
@@ -318,11 +317,9 @@
     </footer>
 
     <script src="~/Content/RegisterLogin.js"></script>
-    <script src="~/Content/jquery.validate.min.js"></script>
-    <script src="~/Content/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Content/jquery-1.10.2.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="~/Content/main.js"></script>
+    <script src="~/Content/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
