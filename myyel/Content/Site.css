@@ -319,6 +319,7 @@ li {
     .menu-right {
         width: 100%;
         height: 100%;
+        margin-top:5vw;
     }
 
     .nav-links2 {
@@ -374,37 +375,41 @@ li {
             }
 
     .menu-right-2 {
-        width: 22%;
+        width: 100%;
         height: 4vw;
-        padding: 1vw 1vw 1vw 8vw;
-        border-right: .1vw solid #303030;
-        font-size: 1.2vw;
+        margin: 1vw;
+        margin-bottom:3vw;
+        border-right: none;
+        font-size: 4vw;
         color: #fff;
+        text-align:center;
+        padding:0;
     }
 
     .menu-right-3 {
-        width: 17%;
+        width: 100%;
         height: 100%;
         padding: 1vw .7vw;
         align-items: center;
-        text-align: right;
+        text-align: center;
         display: flex;
     }
 
     .menu-right-4 {
-        width: 17%;
+        width: 100%;
         height: 100%;
         padding: .5vw .7vw;
         align-items: center;
-        text-align: right;
+        text-align: center;
         display: flex;
     }
 
     .menu-right-3 > .menu-btn {
+        width:40%;
         margin-left: 1.4vw;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 1vw;
-        padding: .1vw .2vw;
+        font-size: 3vw;
+        padding: 1vw 5vw;
         color: #272626;
         background-color: #939191;
         border: .1vw solid #939191;
@@ -421,10 +426,11 @@ li {
         }
 
     .menu-right-3 > .menu-btn-2 {
-        margin-left: 1.7vw;
+        width: 60%;
+        margin-left: 4vw;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 1vw;
-        padding: .2vw .5vw;
+        font-size: 3vw;
+        padding: 1vw 12vw;
         color: #939191;
         cursor: pointer;
     }
@@ -435,10 +441,11 @@ li {
         }
 
     .menu-right-4 > .menu-btn-3 {
-        margin-left: 3vw;
+        width: 40%;
+        margin-left: 1.4vw;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 1vw;
-        padding: .1vw .2vw;
+        font-size: 3vw;
+        padding: 1vw 5vw;
         color: #272626;
         background-color: #939191;
         border: .1vw solid #939191;
@@ -455,10 +462,11 @@ li {
         }
 
     .menu-right-4 > .menu-btn-4 {
-        margin-left: 1.7vw;
+        width: 60%;
+        margin-left: 4vw;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: .85vw;
-        padding: .2vw .5vw;
+        font-size: 3vw;
+        padding: 1vw 12vw;
         color: #939191;
         cursor: pointer;
     }
@@ -467,6 +475,13 @@ li {
             background-color: transparent;
             color: #fff;
         }
+
+    .nav-close{
+        position:fixed;
+        right:5vw;
+        font-size:7vw;
+        color:#939191;
+    }
 }
 
 @media screen and (max-width:750px) {
