@@ -3,6 +3,7 @@
     const registerForm = document.querySelector('.register-bg');
     const register = document.querySelector('.menu-btn-2');
     const loginForm = document.querySelector('.login-bg');
+    const nav_close = document.querySelector('.nav-close');
 
     if (register != null) {
 
@@ -24,6 +25,12 @@
             registerForm.classList.remove('register-bg-active');
         }
     });
+
+    nav_close.addEventListener('click', () => {
+        if (registerForm.classList.contains('register-bg-active')) {
+            registerForm.classList.remove('register-bg-active');
+        }
+    });
 }
 
 RegisterShow();
@@ -33,6 +40,7 @@ const LoginShow = () => {
     const loginForm = document.querySelector('.login-bg');
     const login = document.querySelector('.menu-btn');
     const registerForm = document.querySelector('.register-bg');
+    const nav_close = document.querySelector('.nav-close');
 
     if (login != null) {
         login.addEventListener('click', () => {
@@ -51,6 +59,12 @@ const LoginShow = () => {
     burger2.addEventListener('click', () => {
         if (loginForm.classList.contains('login-bg-active')) {
             loginForm.classList.remove('login-bg-active');
+        }
+    });
+
+    nav_close.addEventListener('click', () => {
+        if (registerForm.classList.contains('register-bg-active')) {
+            registerForm.classList.remove('register-bg-active');
         }
     });
 }

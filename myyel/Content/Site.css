@@ -250,6 +250,15 @@ li {
         color: #fff;
     }
 
+@media screen and (max-width:1440px) {
+    .register-bg {
+        width: 19.2vw !important;
+    }
+
+    .login-bg {
+        width: 19.2vw;
+    }
+}
 
 @media screen and (max-width:1000px) {
     .menu-bg {
@@ -484,17 +493,237 @@ li {
     }
 }
 
-@media screen and (max-width:750px) {
-    .menu-left img {
-        width: 10vw;
-        padding-left: 0;
-        margin-left:0;
+ @media screen and (max-width:1000px) {
+        /*Register*/
+        .register-bg{
+            width: 50vw!important;
+            height: 60vw!important;
+            position: fixed;
+            border: .1vw solid #303030!important;
+            background-color: #000;
+            color: #939191;
+            top: 10vw!important;
+            right: 25vw!important;
+            border-radius: .4vw;
+            z-index: 20!important;
+            /*
+    -moz-transform: translateY(-40) scale(.2);
+    -ms-transform: translateY(-40) scale(.2);
+    -o-transform: translateY(-40) scale(.2);
+    -webkit-transform: translateY(-40) scale(.2);*/
+            transform: translateY(-80vw)!important;
+            transition: ease-in-out .2s;
+        }
+
+        .register-bg-active {
+            /*
+    -moz-transform: translateY(0) scale(1);
+    -ms-transform: translateY(0) scale(1);
+    -o-transform: translateY(0) scale(1);
+    -webkit-transform: translateY(0) scale(1);*/
+            transform: translateY(2vw)!important;
+            transition: ease-in-out .2s;
+        }
+
+        .register-title {
+            font-size: 4vw!important;
+            padding: .4vw;
+            border-bottom: .02vw solid #939191;
+            text-align: center;
+        }
+
+        .register-form {
+            display: flex;
+            height: 5vw!important;
+        }
+
+        .register-form-title {
+            margin: 3vw 3vw!important;
+            font-size: 3vw!important;
+            width: 25vw!important;
+        }
+
+        .register-form-input {
+            padding-right: .2vw;
+        }
+
+            .register-form-input > input {
+                margin: 3vw 3vw!important;
+                border: .005vw solid #2f2e2e;
+                border-radius: .5vw;
+                background-color: #151414;
+                color: #fff;
+                font-size: 2vw!important;
+                width: 20vw!important;
+                height: auto;
+            }
+
+                .register-form-input > input:focus {
+                    outline: .05vw solid #fff;
+                    border-radius: .5vw;
+                }
+
+        .register-btn {
+            font-size: 2vw!important;
+            background-color: #939191;
+            text-align: center!important;
+            cursor: pointer;
+            border-radius: .3vw;
+            margin-left: 35vw!important;
+            margin-top: 1vw!important;
+            border: none;
+            width: 10vw!important;
+            height: 4vw!important;
+        }
+
+    .register-confirm{
+        width:25vw!important;
+        margin-top:8vw!important;
+        margin-left:2vw!important;
     }
 
-    .burger2{
-        margin-top:1vw !important;
+        .register-confirm input{
+            width:2vw!important;
+        }
+
+        .register-confirm span {
+            font-size: 1.2vw!important;
+            margin-top:.2vw!important;
+        }
+
+    /*Login*/
+    .login-bg {
+        width: 50vw !important;
+        height: 60vw !important;
+        position: fixed;
+        border: .1vw solid #303030 !important;
+        background-color: #000;
+        color: #939191;
+        top: 10vw !important;
+        right: 25vw !important;
+        border-radius: .4vw;
+        z-index: 20 !important;
+        /*
+    -moz-transform: translateY(-40) scale(.2);
+    -ms-transform: translateY(-40) scale(.2);
+    -o-transform: translateY(-40) scale(.2);
+    -webkit-transform: translateY(-40) scale(.2);*/
+        transform: translateY(-80vw) !important;
+        transition: ease-in-out .2s;
     }
-}
+
+    .login-bg-active {
+        /*
+    -moz-transform: translateY(0) scale(1);
+    -ms-transform: translateY(0) scale(1);
+    -o-transform: translateY(0) scale(1);
+    -webkit-transform: translateY(0) scale(1);*/
+        transform: translateY(2vw) !important;
+        transition: ease-in-out .2s;
+    }
+
+    .login-title {
+        font-size: 3vw !important;
+        padding: .4vw;
+        border-bottom: .02vw solid #939191;
+        text-align: center;
+    }
+
+    .login-form {
+        display: flex;
+        height: 5vw !important;
+    }
+
+    .login-form-title {
+        margin: 3vw 3vw !important;
+        font-size: 2vw !important;
+        width: 20vw!important;
+    }
+
+            .login-form-title > a {
+                width: 70%;
+                color: #939191;
+                font-size: 1.5vw!important;
+                margin-left: .5vw;
+            }
+
+                .login-form-title > a:hover {
+                    text-decoration: none;
+                    color: #fff;
+                }
+
+        .login-form-input {
+            padding-right: .2vw;
+        }
+
+            .login-form-input > input {
+                margin: 3vw 4vw !important;
+                border: .005vw solid #2f2e2e;
+                border-radius: .5vw;
+                background-color: #151414;
+                color: #fff;
+                font-size: 2vw !important;
+                width: 20vw !important;
+                height: auto;
+            }
+
+                .login-form-input > input:focus {
+                    outline: .05vw solid #fff;
+                    border-radius: .5vw;
+                }
+
+    .login-btn {
+        font-size: 2vw !important;
+        background-color: #939191;
+        text-align: center !important;
+        cursor: pointer;
+        border-radius: .3vw;
+        margin-left: 8vw !important;
+        margin-top: 7vw !important;
+        border: none;
+        width: 10vw !important;
+        height: 4vw !important;
+    }
+
+            .login-btn:hover {
+                color: #272626;
+                text-decoration: none;
+                background-color: #939191;
+                border: .1vw inset #000;
+                cursor: pointer;
+            }
+
+
+    .login-confirm {
+        width: 25vw !important;
+        margin-top: 2vw !important;
+        margin-left: 2vw !important;
+    }
+
+        .login-confirm input {
+            width: 2vw !important;
+            position:fixed!important;
+            left:13vw!important;
+            top:20.5vw!important;
+        }
+
+        .login-confirm span {
+            font-size: 1.2vw !important;
+            margin-top: .2vw !important;
+        }
+    }
+
+ @media screen and (max-width:750px) {
+        .menu-left img {
+            width: 10vw;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .burger2 {
+            margin-top: 1vw !important;
+        }
+    }
 
 
     /*@media screen and (max-width:850px) {
@@ -753,16 +982,6 @@ li {
             cursor: pointer;
         }
 
-
-    @media screen and (max-width:1440px) {
-        .login-bg {
-            width: 19.2vw;
-        }
-
-        .register-bg {
-            width: 19.2vw;
-        }
-    }
 
     /*Navbar*/
     nav {
