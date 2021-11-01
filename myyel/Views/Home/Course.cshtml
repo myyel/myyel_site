@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/main_layout.cshtml";
+}
+
+<!--Lesson-->
+<div class="lesson-bg" id="kurs">
+    <div class="lesson-bg-inside">
+        <div class="lesson-left">
+            <h3>@Model.LessonTitle</h3>
+            <img src="~/Content/img/3d-logo.jpg" alt="3DS Max" />
+        </div>
+        <div class="lesson-right">
+            <p>@Model.LessonItem1</p>
+            <p>@Model.LessonItem2</p>
+            <p>@Model.LessonItem3</p>
+            <p>@Model.LessonItem4</p>
+            <p>@Model.LessonItem5</p>
+            <p>@Model.LessonItem6</p>
+            <div class="lesson-buton">
+                <a href="#contact">ŞİMDİ İLETİŞİME GEÇ</a>
+            </div>
+        </div>
+    </div>
+</div>
+

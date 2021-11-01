@@ -30,55 +30,56 @@
         <div class="menu-left">
             <ul class="nav-logo2">
                 <li>
-                    <a href="#"><img src="~/Content/img/logo02.png" title="logo" /></a>
+                    <a href="#"><img src="~/Content/img/logo02.png" alt="logo" /></a>
                 </li>
                 <li>
-                    <div class="burger2" style="margin-top:20px">
+                    <div class="burger2" style="margin-top:1vw" alt="slide-navbar" title="Menu">
                         <div class="line1"></div>
                         <div class="line2"></div>
                         <div class="line3"></div>
                     </div>
                 </li>
+                <li class="nav-close">X</li>
             </ul>
         </div>
         <div class="menu-right">
             <div class="nav-links2">
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Anasayfa" alt="MainPage">
                     @Html.ActionLink("Anasayfa", "Index", "Home")
                 </div>
-                <div class="menu-right-1">
-                    <a href="#about">Hakkımızda</a>
+                <div class="menu-right-1" title="Hakkımızda" alt="About">
+                    @Html.ActionLink("Hakkımızda", "About", "Home")
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Projeler" alt="Projects">
                     @Html.ActionLink("Projeler", "Project", "Home")
                 </div>
-                <div class="menu-right-1">
-                    <a href="#kurs">Kurs</a>
+                <div class="menu-right-1" title="Kurs" alt="Course">
+                    @Html.ActionLink("Kurs", "Course", "Home")
                 </div>
-                <div class="menu-right-1">
+                <div class="menu-right-1" title="Blog" alt="Blogs">
                     @Html.ActionLink("Blog", "Blog", "Home")
                 </div>
-                <div class="menu-right-1">
-                    <a href="#contact">İletişim</a>
+                <div class="menu-right-1" title="İletişim" alt="Contact">
+                    @Html.ActionLink("İletişim", "Contact", "Home")
                 </div>
                 @if (Request.IsAuthenticated)
                 {
-                    <div id="ns" class="menu-right-2">@User.Identity.Name.ToString()</div>
+                    <div id="ns" alt="User Name" class="menu-right-2">@User.Identity.Name.ToString()</div>
 
                     if (User.Identity.Name == "myyel")
                     {
                         <div class="menu-right-4">
-                            <a href="/Admin" class="menu-btn-4">Yönetim<br />İşlemleri</a>
-                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+                            <a href="/Admin" class="menu-btn-4" alt="Admin Management">Yönetim<br />İşlemleri</a>
+                            <a href="/Account/Logout" class="menu-btn-3" alt="Log out">Çıkış yap</a>
                         </div>
                     }
                     else
                     {
                         <div class="menu-right-4">
-                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4">
+                            <a href="@Url.Action("UserOperations","User", new { @id = User.Identity.Name.ToString() })" class="menu-btn-4" alt="Account Management">
                                 Kullanıcı<br />İşlemleri
                             </a>
-                            <a href="/Account/Logout" class="menu-btn-3">Çıkış yap</a>
+                            <a href="/Account/Logout" class="menu-btn-3" alt="Log out">Çıkış yap</a>
                         </div>
                     }
                 }
@@ -86,8 +87,8 @@
                 {
                     <div class="menu-right-2"></div>
                     <div class="menu-right-3">
-                        <div class="menu-btn-2">Kayıt ol</div>
-                        <div class="menu-btn">Giriş yap</div>
+                        <div class="menu-btn-2" alt="Register">Kayıt ol</div>
+                        <div class="menu-btn" alt="Login">Giriş yap</div>
                     </div>
                 }
             </div>

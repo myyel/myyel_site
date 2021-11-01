@@ -19,6 +19,25 @@ namespace myyel.Controllers
             ViewBag.blog = _context.BlogEntities.ToList();
             return View(_context.HomeEntities.Where(i => i.Id == 1).FirstOrDefault());
         }
+
+        public ActionResult About()
+        {
+            HomeEntity home = _context.HomeEntities.Find(1);
+            return View(home);
+        }
+
+        public ActionResult Course()
+        {
+            HomeEntity home = _context.HomeEntities.Find(1);
+            return View(home);
+        }
+
+        public ActionResult Contact()
+        {
+            HomeEntity home = _context.HomeEntities.Find(1);
+            return View(home);
+        }
+
         public ActionResult Project()
         {
             ViewBag.ProjectImage = _context.ProjectImageEntities;

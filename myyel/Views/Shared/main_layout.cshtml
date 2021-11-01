@@ -49,19 +49,19 @@
                     @Html.ActionLink("Anasayfa", "Index", "Home")
                 </div>
                 <div class="menu-right-1" title="Hakkımızda" alt="About">
-                    <a href="#about">Hakkımızda</a>
+                    @Html.ActionLink("Hakkımızda", "About", "Home")
                 </div>
                 <div class="menu-right-1" title="Projeler" alt="Projects">
                     @Html.ActionLink("Projeler", "Project", "Home")
                 </div>
                 <div class="menu-right-1" title="Kurs" alt="Course">
-                    <a href="#kurs">Kurs</a>
+                    @Html.ActionLink("Kurs", "Course", "Home")
                 </div>
                 <div class="menu-right-1" title="Blog" alt="Blogs">
                     @Html.ActionLink("Blog", "Blog", "Home")
                 </div>
                 <div class="menu-right-1" title="İletişim" alt="Contact">
-                    <a href="#contact">İletişim</a>
+                    @Html.ActionLink("İletişim", "Contact", "Home")
                 </div>
                 @if (Request.IsAuthenticated)
                 {
