@@ -107,6 +107,14 @@
     padding: .5vw 2vw;
 }
 
+    .admin-content-item h2{
+        font-size:1.7vw;
+    }
+
+    .admin-content-item h3 {
+        font-size: 1.7vw;
+    }
+
     .admin-content-item span {
         font-size: 3vw;
     }
@@ -131,6 +139,11 @@
         position: absolute;
         top: 8.5vw;
         left: 88vw;
+    }
+
+    .admin-content-item-a:hover{
+        text-decoration:none!important;
+
     }
 
 /*Blog*/

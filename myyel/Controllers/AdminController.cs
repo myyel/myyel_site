@@ -566,5 +566,13 @@ namespace myyel.Controllers
         {
             return View();
         }
+
+        public ActionResult Message()
+        {
+            var homeEntity = _context.HomeEntities.Find(1);
+            ViewData["logo"] = homeEntity.FooterImage;
+            ViewData["text"] = homeEntity.FooterText;
+            return View(_context.HomeFormEntites.ToList());
+        }
     }
 }
