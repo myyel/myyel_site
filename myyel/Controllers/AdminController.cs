@@ -574,5 +574,22 @@ namespace myyel.Controllers
             ViewData["text"] = homeEntity.FooterText;
             return View(_context.HomeFormEntites.ToList());
         }
+
+        public ActionResult MessageDelete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            HomeFormEntites blogEntity = _context.HomeFormEntites.Find(id);
+            if (blogEntity == null)
+            {
+                return HttpNotFound();
+            }
+            _context.HomeFormEntites.Remove(blogEntity);
+            _context.SaveChanges();
+            
+            return RedirectToAction("Message");
+        }
     }
 }
