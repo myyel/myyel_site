@@ -12,7 +12,6 @@ namespace myyel.Models
         public int Id { get; set; }
         [System.Web.Mvc.AllowHtml]
         [Required]
-        [RegularExpression(@"^[a-zA-ZıİçÇşŞğĞÜüÖö]*$", ErrorMessage = "Lütfen ismini giriniz")]
         [DisplayName("Ad")]
         public string Name { get; set; }
         [System.Web.Mvc.AllowHtml]

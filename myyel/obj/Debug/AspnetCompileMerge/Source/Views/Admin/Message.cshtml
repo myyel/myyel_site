@@ -1,0 +1,121 @@
+﻿@model IEnumerable<myyel.Entity.HomeFormEntites>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <head>
+        <title style="color:#626262">MyyeL Design</title>
+        <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+        <link rel="shortcut icon" href="~/Content/img/logo02.ico" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="~/Content/Swiper.css" />
+        <link rel="stylesheet" href="~/Content/Admin-Site.css" />
+        <link rel="stylesheet" href="~/Content/AdminHomeEdit.css" />
+
+    </head>
+    <body>
+
+        <!--Admin_Navbar-->
+        <div class="admin-navbar">
+            <div class="admin-navbar-bg">
+                <div class="admin-navbar-left">
+                    <a href="~/Admin/Index"><img src="~/Content/img/logo-yan.png" /></a>
+                </div>
+                <div class="admin-navbar-right">
+                    <div class="admin-navbar-right-item">
+                        @Html.ActionLink("Anasayfa", "Index", "Home")
+                    </div>
+                    <div class="admin-navbar-right-item">
+                        @Html.ActionLink("Anasayfa İşlemleri", "HomeEdit", "Admin")
+                    </div>
+                    <div class="admin-navbar-right-item">
+                        @Html.ActionLink("Kullanıcı İşlemleri", "UserPage", "Admin")
+                    </div>
+                    <div class="admin-navbar-right-item">
+                        @Html.ActionLink("Proje Resmi Ekle", "ProjectImage", "Admin")
+                    </div>
+                    <div class="admin-navbar-right-item">
+                        @Html.ActionLink("Blog İşlemleri", "Blog", "Admin")
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-main-bg">
+                <div class="admin-title">
+                    <img src="~/Content/img-icon/setting.png" />
+                    <h1>Blog Listesi</h1>
+                </div>
+                <table class="table" style="width:100vw; margin-top:3vw;font-size:1vw;">
+                    <tr>
+                        <th style="width:3%;">
+                            No
+                        </th>
+                        <th style="width:15%;">
+                            Ad
+                        </th>
+                        <th style="width:10%;">
+                            Soyad
+                        </th>
+                        <th style="width:12%;">
+                            Telefon
+                        </th>
+                        <th style="width:12%;">
+                            Mail
+                        </th>
+                        <th style="width:30%;">
+                            Mesaj
+                        </th>
+                        <th style="width:10%;">
+                            <img src="~/Content/img-icon/setting.png" style="width:2vw; opacity:.8; margin-left:3vw;" />
+                        </th>
+                    </tr>
+
+                    @{int i = 1;}
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="tr-hov">
+                            <td>
+                                @i.ToString()
+                                @{ i = i + 1;}
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FormName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FormSurname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FormTelefon)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FormMail)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FormMesaj)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sil", "MessageDelete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        <script>
+    function DeleteConfirm() {
+                confirm("Silmek istediğinizden emin misiniz?");
+            }</script>
+    </body>
+</html>

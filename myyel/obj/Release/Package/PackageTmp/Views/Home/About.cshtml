@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/main_layout.cshtml";
+}
+
+<!--About-->
+<div class="hak_bg" id="about">
+    <div class="hak-logo">
+        <video autoplay loop muted>
+            <source src="~/Content/img/myyel_design2.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <div class="hak-bas-metin">
+        <div class="hak-bas">
+            <hr /><p>Hakkımızda</p><hr />
+        </div>
+        <div class="hak-metin">
+            <p>
+                @Model.About1
+            </p>
+            <p>
+                @Model.About2
+            </p>
+        </div>
+        <div class="hak-buton">
+            <a href="/Home/Project" title="Projeler">Projeler</a>
+        </div>
+    </div>
+</div>
+

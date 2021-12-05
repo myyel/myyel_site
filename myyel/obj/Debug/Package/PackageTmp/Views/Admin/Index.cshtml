@@ -1,0 +1,36 @@
+﻿@using myyel.Entity
+@model HomeEntity
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+}
+
+
+<div class="admin-title">
+    <img src="~/Content/img-icon/setting.png" />
+    <h1>Admin Sayfası</h1>    
+</div>
+<hr />
+<div class="admin-content">
+    <div class="admin-content-item">
+        <span>@ViewBag.userCount</span>
+        <h2>Kullanıcı</h2>
+        <p>Kaydı bulunmaktadır</p>
+        <div class="circle"><img src="~/Content/img-icon/user.png" alt="user" /></div>
+    </div>
+    <div class="admin-content-item" style="background-color: #cf6c40;">
+        <span>@ViewBag.visitor</span>
+        <h3>Kişi</h3>
+        <p>Sayfayı ziyaret etmiştir</p>
+        <div class="circle2"><img src="~/Content/img-icon/eye.PNG" alt="user" style="width:13vw!important"/></div>
+    </div>
+    <a class="admin-content-item-a" href="/Admin/Message">
+        <div class="admin-content-item" style="background-color: #3949a3;">
+            <span>@ViewBag.messageCount</span>
+            <h3>Mesaj</h3>
+            <p>Bulunmaktadır</p>
+            <div class="circle3"><img src="~/Content/img-icon/mesaj.PNG" alt="user" style="width:8.5vw!important" /></div>
+        </div>
+    </a>
+</div>

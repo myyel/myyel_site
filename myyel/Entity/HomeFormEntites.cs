@@ -14,7 +14,6 @@ namespace myyel.Entity
         [AllowHtml]
         [Required]
         [DisplayName("Ad")]
-        [RegularExpression(@"^[a-zA-ZıİçÇşŞğĞÜüÖö]*$", ErrorMessage = "Lütfen ismini giriniz")]
         public string FormName { get; set; }
         [AllowHtml]
         [Required]

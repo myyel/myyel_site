@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Views/Shared/main_layout.cshtml";
+}
+
+<!--Projects-->
+<div class="project-group-2">
+    <div class="project-title">
+        <p>Projeler</p>
+    </div>
+    <div class="project-list-2">
+        @{
+            if (ViewBag.ProjectImage != null)
+            {
+                foreach (var item in ViewBag.ProjectImage)
+                {
+                    <div class="project-image-2">
+                        <a href="~/Content/portfoy/@item.Id .jpg" data-lightbox="mygallery">
+                            <img src="~/Content/portfoy/@item.Id .jpg" alt="project" />
+                        </a>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+
+<link href="~/Content/lightbox.min.css" rel="stylesheet" />
+

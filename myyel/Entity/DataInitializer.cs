@@ -15,16 +15,16 @@ namespace myyel.Entity
                 new HomeEntity()
                 {
                     About1="3D mimari tasarım, yapı tasarımlarının ya da 3d çizim projelerinin süsleme çalışmasıdır. Bir başka ifadeyle yapıların iki boyutlu verilerden üç boyutlu simülasyon haline dönüştürülme işlemidir. Bu çalışmalar daha sonra tek tek görüntü olarak ya da 3d iç mekan veye dış cephe tasarım içerisine texture, güneş ışığı, yapay ışık, gölge etkisi gibi ayarlar yapılarak montajlanır. Böylece hazırlanan 3d modelleme çalışmaları özellikle henüz tamamlanmamış yapıların görselleştirilmesi ve bütçe bedelinin tespit edilmesinde son derece önemlidir. Çizim tekniğinin özelleştirilmesiyle oluşan görüntüler sayesinde farklı açılardan bina, ev, alışveriş merkezleri gibi yapıların iç tasarım ve dış cephe tasarım çalışmaları çok daha düşük maliyetle ve çok daha az zamanda görülebilir.",
-                    About2="3D mimari modelleme tekniği ile söz konusu projelere görselleştirme yapılmasının nasıl faydalar sağladığını bir düşünün! Projelerinin en iyi hale gelmesi, kontrol edilebilir maliyet, pazarlamacıların ve müşteri adaylarının her birine zaman ve para kaybı yaşamadan ürünlerini tanıtabilmeleri, projelerin inşaat öncesi yapısal sorunlarının tespiti ve çözümü için mimar ve mühendislere olan inanılmaz yardımı, sunum kalitesi, maliyet gibi nedenlerden dolayı 3d mimari tasarım yapı sektöründe vazgeçilmez bir ihtiyaçtır. İşte tam bu noktada sizlere anlatmış olduğumuz konu ile ilgili kaliteli hizmet vermek noktasında 3d görselleştirme hizmeti vermekteyiz.Umarız sizlere yardımcı olabiliriz.",
+                    About2="3D mimari modelleme tekniği ile söz konusu projelere görselleştirme yapılmasının nasıl faydalar sağladığını bir düşünün! Projelerinin en iyi hale gelmesi, kontrol edilebilir maliyet, pazarlamacıların ve müşteri adaylarının her birine zaman ve para kaybı yaşamadan ürünlerini tanıtabilmeleri, projelerin inşaat öncesi yapısal sorunlarının tespiti ve çözümü için mimar ve mühendislere olan inanılmaz yardımı, sunum kalitesi, maliyet gibi nedenlerden dolayı 3d mimari tasarım yapı sektöründe vazgeçilmez bir ihtiyaçtır. İşte tam bu noktada sizlere anlatmış olduğumuz konu ile ilgili kaliteli hizmet vermek noktasında 3d görselleştirme hizmeti vermekteyiz. Umarız sizlere yardımcı olabiliriz.",
                     AdItemImageA="ad-1",
-                    AdItemImageAText1="Bu gerçekçi ve detaylı görselleri, sizin için uygun bütçeli olarak tam vaktinde hazırlıyoruz!",
-                    AdItemImageAText2="Görsel anlamda tüm beklentilerinizi karşılamak için projelerinizin tüm detaylarına dikkat edip hiç bir noktasını atlamadan çizimlerimize aktarıyoruz.",
+                    AdItemImageAText1="Mimari projelerinizi gerçekçi ve detaylı bir şekilde tam vaktinde hazırlıyoruz",
+                    AdItemImageAText2="Tüm beklentilerinize titizlikle cevap vermeye çalışıyoruz. Memnuniyetiniz en önemli önceliğimiz.",
                     AdItemImageB="ad-2",
-                    AdItemImageBText1="Ofisimizin ilk hedefi müşterilerimizin fikirlerini hiç bir kayıp olmadan gerçekçi görsellere dönüştürmektir.",
-                    AdItemImageBText2="Çalışma prensiplerimiz ve sistemimiz, dünyanın her yerinden tasarımcılara, mimarlara, proje geliştiricilerine, iç mimarlara ve üreticilere uyumlu bir hizmet verecek şekildedir.",
+                    AdItemImageBText1="Siz müşterilerimizin fikirleri ve beklentileri doğrultusunda en uygun hizmeti vermeye çalışıyoruz.",
+                    AdItemImageBText2="Aklınızdaki tasarımı, görsele dökmek için elimizden geleni yapmaya çalışıyoruz.",
                     AdItemImageC="ad-3",
-                    AdItemImageCText1="Müşterilerimiz için ister projelerinin tasarım aşamasında, ister tasarlanmış projenin görselleştirme aşamasında hizmet verebiliriz",
-                    AdItemImageCText2="3 Boyutlu görselleştirme projeleriniz için bizden hemen teklif alın! Fiyat tekliflerimiz açık ve anlaşılır bir şekilde hazırlanmaktadır, kıyaslama ve değerlendirme yapabilirsiniz.",
+                    AdItemImageCText1="Projelerinize ister görsel olarak, ister video olarak da hizmet verebiliriz.",
+                    AdItemImageCText2="Hem dış mimari, hem iç mimari, hem kat planı, hem de parça mimari tasarımlarınızı gönül rahatlığıyla bize yaptırabilirsiniz.",
                     AdTitle1="3 Boyutlu Görselleştime Hizmeti Almak için Doğru Adrestesiniz!",
                     AdTitle2="Müşterilerinize, yüksek kaliteli fotorealistik görsellerle etkileyici sunumlar yapabilirsiniz.",
                     ContactFacebook="myyeldesign",
@@ -45,12 +45,12 @@ namespace myyel.Entity
                     ProjectImage1="project3",
                     ProjectImage2="project1",
                     ProjectImage3="project2",
-                    SliderItemA1="Yenilikçi Yaklaşımlar,",
-                    SliderItemA2="Yeni Nesil İç Mimari",
-                    SliderItemB1="Yaşamak ve",
-                    SliderItemB2="Yaşatmak için",
-                    SliderItemC1="Düşünür,",
-                    SliderItemC2="Tasarlar, Uygular"
+                    SliderItemA1="Modern Yaklaşımlar,",
+                    SliderItemA2="Modern Mimari",
+                    SliderItemB1="En üst kalitede",
+                    SliderItemB2="Profesyonel Hizmet",
+                    SliderItemC1="Mimari Görselleştirme için",
+                    SliderItemC2="Doğru adres"
                 }
             };
 

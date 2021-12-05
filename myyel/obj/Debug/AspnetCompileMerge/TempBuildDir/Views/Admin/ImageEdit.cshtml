@@ -1,0 +1,35 @@
+﻿@using myyel.Entity
+@model HomeEntity
+
+@{
+    ViewBag.Title = "ImageEdit";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+}
+
+<h2 class="image-title">Resim İşlemleri</h2>
+<hr />
+
+<div class="image-ex">
+    <div class="image-in">
+        @{
+            var dir = "~/Content/img/" + Url.RequestContext.RouteData.Values["id"] + " .jpg";
+            <img src="@Url.Content(dir)" alt="image" class="change-image">
+        }
+    </div>
+
+    <div class="image-in" style="padding:5vw 0 0 2vw;">
+        @using (Html.BeginForm("ImageEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Hidden("hiddenid", Url.RequestContext.RouteData.Values["id"])
+            <p>
+                @Html.TextBox("uploadedImage", "", new { type = "File" })
+            </p>
+            <p>
+                <input class="image-in-buton" type="submit" value="Değiştir" />
+            </p>
+        }
+    </div>
+</div>
+<hr />

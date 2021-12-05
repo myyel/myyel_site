@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="background-color:aliceblue">
+    <div style='width:70%; margin-left:2vw;'>
+        <h2> Title</h2><hr />
+        <div style='margin:1vw 2vw;'>
+            @foreach (var item in collection)
+            {
+                <img src="~/Content/mail_images/@item" style="width:100%" />
+            }
+        </div>
+        <h3 style='margin-top: 8vw; '> Yaratıcı Tasarımlar </h3>
+        <p>
+            Eğer şifre yenileme talebinin size ait olmadığını düşünüyorsanız lütfen bu e-postayı dikkate almayın. Mevcut şifreniz ile giriş yapmaya devam edebilirsiniz.
+        </p>
+        <p style='margin-top:6vw;'> Teşekkür ederiz </p>
+    </div>
+</body>
+</html>

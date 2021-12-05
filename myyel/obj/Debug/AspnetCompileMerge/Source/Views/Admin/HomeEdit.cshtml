@@ -1,0 +1,608 @@
+﻿@using myyel.Entity
+@model HomeEntity
+
+@{
+    ViewBag.Title = "HomeEdit";
+    Layout = "~/Views/Shared/admin_home_layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ProjectImage1)
+    @Html.HiddenFor(model => model.ProjectImage2)
+    @Html.HiddenFor(model => model.ProjectImage3)
+    @Html.HiddenFor(model => model.AdItemImageA)
+    @Html.HiddenFor(model => model.AdItemImageB)
+    @Html.HiddenFor(model => model.AdItemImageC)
+    @Html.HiddenFor(model => model.FooterImage)
+
+
+    <div class="form-group slider-item-1">
+        @Html.LabelFor(model => model.SliderItemA1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SliderItemA1, new { htmlAttributes = new { @class = "form-input", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SliderItemA1, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.SliderItemA2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SliderItemA2, new { htmlAttributes = new { @class = "form-input", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SliderItemA2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group slider-item-2">
+        @Html.LabelFor(model => model.SliderItemB1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SliderItemB1, new { htmlAttributes = new { @class = "form-input", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SliderItemB1, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.LabelFor(model => model.SliderItemB2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SliderItemB2, new { htmlAttributes = new { @class = "form-input", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SliderItemB2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group slider-item-3">
+        @Html.LabelFor(model => model.SliderItemC1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SliderItemC1, new { htmlAttributes = new { @class = "form-input", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SliderItemC1, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.LabelFor(model => model.SliderItemC2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.EditorFor(model => model.SliderItemC2, new { htmlAttributes = new { @class = "form-input", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.SliderItemC2, "", new { @class = "text-danger" })
+        </div>
+
+        <input type="submit" value="Kaydet" class="form-buton" />
+    </div>
+
+    <!--Slider-->
+    <div class="back-bg">
+        <div class="row">
+        </div>
+        <div class="row slider">
+            <div class="col-lg-12">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div id="0" class="carousel-item active" data-id="0" data-slide-to="3">
+                            @Model.SliderItemA1.ToUpper()
+                            <br />
+                            @Model.SliderItemA2.ToUpper()
+                            <br />
+                            <a class="btn-kesfet" href="#">KEŞFET</a>
+                        </div>
+                        <div id="1" class="carousel-item" data-id="1">
+                            @Model.SliderItemB1.ToUpper()
+                            <br />
+                            @Model.SliderItemB2.ToUpper()
+                            <br />
+                            <a class="btn-kesfet" href="#">KEŞFET</a>
+                        </div>
+                        <div id="2" class="carousel-item" data-id="2">
+                            @Model.SliderItemC1.ToUpper()
+                            <br />
+                            @Model.SliderItemC2.ToUpper()
+                            <br />
+                            <a class="btn-kesfet" href="#">KEŞFET</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <ul class="slider-nav">
+                            <li class="slider-nav-item" id="3">
+                                <a href="#carouselExampleSlidesOnly" data-slide-to="0">
+                                    <p>
+                                        <span style="font-size:24px">01</span><br />
+                                        @Model.SliderItemA1.ToUpper()
+                                        <br />
+                                        @Model.SliderItemA2.ToUpper()
+                                        <br />
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="slider-nav-item" id="4">
+                                <a href="#carouselExampleSlidesOnly" data-slide-to="1">
+                                    <p>
+                                        <span style="font-size:24px">02</span><br />
+                                        @Model.SliderItemB1.ToUpper()
+                                        <br />
+                                        @Model.SliderItemB2.ToUpper()
+                                        <br />
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="slider-nav-item2" id="5">
+                                <a href="#carouselExampleSlidesOnly" data-slide-to="2">
+                                    <p>
+                                        <span style="font-size:24px">03</span><br />
+                                        @Model.SliderItemC1.ToUpper()
+                                        <br />
+                                        @Model.SliderItemC2.ToUpper()
+                                        <br />
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--About-->
+    <div class="hak_bg">
+        <div class="hak-logo">
+            <video autoplay loop muted>
+                <source src="~/Content/img/myyel_design2.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="hak-bas-metin">
+            <div class="hak-bas">
+                <hr /><p>Hakkımızda</p><hr />
+            </div>
+            <div class="hak-metin">
+                <p>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.About1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <textarea class="form-input text-box single-line" id="About1" name="About1" value="@Model.About1"
+                                  style="width:23vw; height:27vw;">@Model.About1</textarea>
+                        <!--@Html.EditorFor(model => model.About2, new { htmlAttributes = new { @class = "form-input" } })-->
+                        @Html.ValidationMessageFor(model => model.About1, "", new { @class = "text-danger" })
+                    </div>
+                </p>
+                <p>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.About2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <textarea class="form-input text-box single-line" id="About2" name="About2" value="@Model.About2"
+                                  style="width:23vw; height:27vw;">@Model.About2</textarea>
+                        <!--@Html.EditorFor(model => model.About2, new { htmlAttributes = new { @class = "form-input" } })-->
+                        @Html.ValidationMessageFor(model => model.About2, "", new { @class = "text-danger" })
+
+                        <input type="submit" value="Kaydet" class="form-buton" id="AboutButon" />
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!--Projects-->
+    <div class="project-group">
+        <div class="project-item">
+            <a href="#">
+                <img class="project-img" src="~/Content/img/@Model.ProjectImage1 .jpg" alt="Yapı Tasarımları" />
+                <div class="project-yazi">
+                    <h4 style="font-size:1.3vw">YAPI TASARIMLARI</h4>
+                    <p style="font-size:0.85vw">DIŞ MİMARİ TASARIMLARI</p>
+                </div>
+            </a>
+        </div>
+        <div class="project-item">
+            <a href="#">
+                <img class="project-img" src="~/Content/img/@Model.ProjectImage2 .jpg" alt="Ticari Alanlar" />
+                <div class="project-yazi">
+                    <h4 style="font-size:1.3vw">TİCARİ ALANLAR</h4>
+                    <p style="font-size:0.85vw">DIŞ MİMARİ TASARIMLARI</p>
+                </div>
+            </a>
+        </div>
+        <div class="project-item">
+            <a href="#">
+                <img class="project-img" src="~/Content/img/@Model.ProjectImage3 .jpg" alt="Kat Planı" />
+                <div class="project-yazi">
+                    <h4 style="font-size:1.3vw">KAT PLANLARI</h4>
+                    <p style="font-size:0.85vw">DIŞ MİMARİ TASARIMLARI</p>
+                </div>
+            </a>
+        </div>
+        <a href="ImageEdit/@Model.ProjectImage2" class="image-button1">Resmi Değiştir</a>
+        <a href="ImageEdit/@Model.ProjectImage1" class="image-button2">Resmi Değiştir</a>
+        <a href="ImageEdit/@Model.ProjectImage3" class="image-button3">Resmi Değiştir</a>
+    </div>
+
+    <!--Advertisement-->
+    <div class="ad-bg">
+        <div class="text-center">
+            <div class="" style="justify-content:space-between">
+                @Html.LabelFor(model => model.AdTitle1, htmlAttributes: new { @class = "control-label col-md-1" })
+                <textarea class="ad-input" id="AdTitle1" name="AdTitle1" value="@Model.AdTitle1">@Model.AdTitle1</textarea>
+                @Html.ValidationMessageFor(model => model.AdTitle1, "", new { @class = "text-danger" })
+            </div>
+            <div class="" style="justify-content:space-between">
+                @Html.LabelFor(model => model.AdTitle2, htmlAttributes: new { @class = "control-label col-md-1" })
+                <textarea class="ad-input" id="AdTitle2" name="AdTitle2" value="@Model.AdTitle2"
+                          style="width:35vw">@Model.AdTitle2</textarea>
+                @Html.ValidationMessageFor(model => model.AdTitle2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="ad-item">
+            <div class="ad-item-img">
+                <img src="~/Content/img/@Model.AdItemImageA .jpg" alt="advertisement" />
+            </div>
+            <div class="ad-item-text">
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.AdItemImageAText1, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="AdItemImageAText1" name="AdItemImageAText1"
+                              value="@Model.AdItemImageAText1"
+                              style="font-size:.6vw; margin-left:.5vw;">@Model.AdItemImageAText1</textarea>
+                    @Html.ValidationMessageFor(model => model.AdItemImageAText1, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.AdItemImageAText2, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="AdItemImageAText2" name="AdItemImageAText2"
+                              value="@Model.AdItemImageAText2"
+                              style="font-size:.6vw; margin-left:.5vw; height:3vw;">@Model.AdItemImageAText2</textarea>
+                    @Html.ValidationMessageFor(model => model.AdItemImageAText2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="ad-item">
+            <div class="ad-item-text">
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.AdItemImageBText1, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="AdItemImageBText1" name="AdItemImageBText1"
+                              value="@Model.AdItemImageBText1"
+                              style="font-size:.6vw; margin-left:.5vw; height:2.5vw;">@Model.AdItemImageBText1</textarea>
+                    @Html.ValidationMessageFor(model => model.AdItemImageBText1, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.AdItemImageBText2, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="AdItemImageBText2" name="AdItemImageBText2"
+                              value="@Model.AdItemImageBText2"
+                              style="font-size:.6vw; margin-left:.5vw; height:3vw;">@Model.AdItemImageBText2</textarea>
+                    @Html.ValidationMessageFor(model => model.AdItemImageBText2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="ad-item-img text-right">
+                <img src="~/Content/img/@Model.AdItemImageB .jpg" alt="advertisement" />
+            </div>
+        </div>
+        <div class="ad-item">
+            <div class="ad-item-img">
+                <img src="~/Content/img/@Model.AdItemImageC .jpg" alt="advertisement" />
+            </div>
+            <div class="ad-item-text">
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.AdItemImageCText1, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="AdItemImageCText1" name="AdItemImageCText1"
+                              value="@Model.AdItemImageCText1"
+                              style="font-size:.6vw; margin-left:.5vw; height:2.5vw">@Model.AdItemImageCText1</textarea>
+                    @Html.ValidationMessageFor(model => model.AdItemImageCText1, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.AdItemImageCText2, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="AdItemImageCText2" name="AdItemImageCText2"
+                              value="@Model.AdItemImageCText2"
+                              style="font-size:.6vw; margin-left:.5vw; height:3vw;">@Model.AdItemImageCText2</textarea>
+                    @Html.ValidationMessageFor(model => model.AdItemImageCText2, "", new { @class = "text-danger" })
+                </div>
+
+                <input type="submit" value="Kaydet" class="ad-buton" />
+            </div>
+        </div>
+
+        <a href="ImageEdit/@Model.AdItemImageA" class="ad-button1">Resmi Değiştir</a>
+        <a href="ImageEdit/@Model.AdItemImageB" class="ad-button2">Resmi Değiştir</a>
+        <a href="ImageEdit/@Model.AdItemImageC" class="ad-button3">Resmi Değiştir</a>
+    </div>
+
+    <!--Lesson-->
+    <div class="lesson-bg">
+        <div class="lesson-bg-inside">
+            <div class="lesson-left">
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonTitle, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonTitle" name="LessonTitle"
+                              value="@Model.LessonTitle"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonTitle</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonTitle, "", new { @class = "text-danger" })
+                </div>
+                <img src="~/Content/img/3d-logo.jpg" alt="3DS Max" />
+            </div>
+            <div class="lesson-right">
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonItem1, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonItem1" name="LessonItem1"
+                              value="@Model.LessonItem1"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonItem1</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonItem1, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonItem2, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonItem2" name="LessonItem2"
+                              value="@Model.LessonItem2"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonItem2</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonItem2, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonItem3, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonItem3" name="LessonItem3"
+                              value="@Model.LessonItem3"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonItem3</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonItem3, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonItem4, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonItem4" name="LessonItem4"
+                              value="@Model.LessonItem4"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonItem4</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonItem4, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonItem5, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonItem5" name="LessonItem5"
+                              value="@Model.LessonItem5"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonItem5</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonItem5, "", new { @class = "text-danger" })
+                </div>
+                <div class="text-left" style="justify-content:space-between">
+                    @Html.LabelFor(model => model.LessonItem6, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                    <textarea class="ad-input" id="LessonItem6" name="LessonItem6"
+                              value="@Model.LessonItem6"
+                              style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.LessonItem6</textarea>
+                    @Html.ValidationMessageFor(model => model.LessonItem6, "", new { @class = "text-danger" })
+                    <input type="submit" value="Kaydet" class="ad-buton" />
+                </div>
+                <div class="lesson-buton">
+                    <a href="#">ŞİMDİ İLETİŞİME GEÇ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Blog-->
+    <div class="blog-bg">
+        <h1>BLOG</h1>
+        <div class="blog-slide">
+            <div class="swiper-container mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="blog-box" id="6">
+                            <div class="blog-img">
+                                <a href="#"><img src="~/Content/img/blog-1.jpg" alt="1" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>Evinizi Sonbahara Hazırlamanın 9 Ücretsiz ve Kolay Yolu</h5>
+                                <p>
+                                    Tıpkı sonbahar havasının, adımlarınızda size yeni bir moral vermesi gibi, evinizin dekorunu küçük bir bahar tazelemesi
+                                    ile uyandırmak, size…
+                                </p>
+                                <a href="#">Devamı</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="7" class="blog-box">
+                            <div class="blog-img">
+                                <a href="#"><img src="~/Content/img/blog-2.jpg" alt="1" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>Evinizi Sonbahara Hazırlamanın 9 Ücretsiz ve Kolay Yolu</h5>
+                                <p>
+                                    Tıpkı sonbahar havasının, adımlarınızda size yeni bir moral vermesi gibi, evinizin dekorunu küçük bir bahar tazelemesi
+                                    ile uyandırmak, size…
+                                </p>
+                                <a href="#">Devamı</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="8" class="blog-box">
+                            <div class="blog-img">
+                                <a href="#"><img src="~/Content/img/blog3.jpg" alt="1" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>Evinizi Sonbahara Hazırlamanın 9 Ücretsiz ve Kolay Yolu</h5>
+                                <p>
+                                    Tıpkı sonbahar havasının, adımlarınızda size yeni bir moral vermesi gibi, evinizin dekorunu küçük bir bahar tazelemesi
+                                    ile uyandırmak, size…
+                                </p>
+                                <a href="#">Devamı</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="blog-box" id="9">
+                            <div class="blog-img">
+                                <a href="#"><img src="~/Content/img/blog4.jpeg" alt="1" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>Evinizi Sonbahara Hazırlamanın 9 Ücretsiz ve Kolay Yolu</h5>
+                                <p>
+                                    Tıpkı sonbahar havasının, adımlarınızda size yeni bir moral vermesi gibi, evinizin dekorunu küçük bir bahar tazelemesi
+                                    ile uyandırmak, size…
+                                </p>
+                                <a href="#">Devamı</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="10" class="blog-box">
+                            <div class="blog-img">
+                                <a href="#"><img src="~/Content/img/blog-1.jpg" alt="1" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>Evinizi Sonbahara Hazırlamanın 9 Ücretsiz ve Kolay Yolu</h5>
+                                <p>
+                                    Tıpkı sonbahar havasının, adımlarınızda size yeni bir moral vermesi gibi, evinizin dekorunu küçük bir bahar tazelemesi
+                                    ile uyandırmak, size…
+                                </p>
+                                <a href="#">Devamı</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div id="11" class="blog-box">
+                            <div class="blog-img">
+                                <a href="#"><img src="~/Content/img/blog-2.jpg" alt="1" /></a>
+                            </div>
+                            <div class="blog-detail">
+                                <h5>Evinizi Sonbahara Hazırlamanın 9 Ücretsiz ve Kolay Yolu</h5>
+                                <p>
+                                    Tıpkı sonbahar havasının, adımlarınızda size yeni bir moral vermesi gibi, evinizin dekorunu küçük bir bahar tazelemesi
+                                    ile uyandırmak, size…
+                                </p>
+                                <a href="#">Devamı</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Contact-->
+    <div class="contact-bg">
+        <div class="contact-bg-inside">
+            <div class="contact-text">
+                <div class="contact-text-head">
+                    <div class="text-left" style="justify-content:space-between">
+                        @Html.LabelFor(model => model.ContactTitleA, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                        <textarea class="ad-input" id="ContactTitleA" name="ContactTitleA"
+                                  value="@Model.ContactTitleA"
+                                  style="font-size:.7vw; margin-left:.5vw; width:20vw;">@Model.ContactTitleA</textarea>
+                        @Html.ValidationMessageFor(model => model.ContactTitleA, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="text-left" style="justify-content:space-between">
+                        @Html.LabelFor(model => model.ContactTitleB, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                        <textarea class="ad-input" id="ContactTitleB" name="ContactTitleB"
+                                  value="@Model.ContactTitleB"
+                                  style="font-size:.5vw; margin-left:.5vw; width:25vw;">@Model.ContactTitleB</textarea>
+                        @Html.ValidationMessageFor(model => model.ContactTitleB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="contact-text-item">
+                    <ul>
+                        <li>
+                            <p style="color: #939191">Telefon</p>
+                            <div class="text-left" style="">
+                                <div>
+                                    @Html.LabelFor(model => model.ContactPhone, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                                </div>
+                                <textarea class="ad-input" id="ContactPhone" name="ContactPhone"
+                                          value="@Model.ContactPhone"
+                                          style="font-size:.7vw; margin-left:1vw; width:8vw;">@Model.ContactPhone</textarea>
+                                @Html.ValidationMessageFor(model => model.ContactPhone, "", new { @class = "text-danger" })
+                            </div>
+                        </li>
+                        <li>
+                            <p style="color: #939191">Facebook</p>
+                            <div class="text-left" style="">
+                                <div>
+                                    @Html.LabelFor(model => model.ContactFacebook, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                                </div>
+                                <textarea class="ad-input" id="ContactFacebook" name="ContactFacebook"
+                                          value="@Model.ContactFacebook"
+                                          style="font-size:.7vw; margin-left:1vw; width:8vw;">@Model.ContactFacebook</textarea>
+                                @Html.ValidationMessageFor(model => model.ContactFacebook, "", new { @class = "text-danger" })
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p style="color: #939191">Mail</p>
+                            <div class="text-left" style="">
+                                <div>
+                                    @Html.LabelFor(model => model.ContactMail, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                                </div>
+                                <textarea class="ad-input" id="ContactMail" name="ContactMail"
+                                          value="@Model.ContactMail"
+                                          style="font-size:.7vw; margin-left:1vw; width:10vw;">@Model.ContactMail</textarea>
+                                @Html.ValidationMessageFor(model => model.ContactMail, "", new { @class = "text-danger" })
+                            </div>
+                        </li>
+                        <li>
+                            <p style="color: #939191">İnstagram</p>
+                            <div class="text-left" style="">
+                                <div>
+                                    @Html.LabelFor(model => model.ContactInsta, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                                </div>
+                                <textarea class="ad-input" id="ContactInsta" name="ContactInsta"
+                                          value="@Model.ContactInsta"
+                                          style="font-size:.7vw; margin-left:1vw; width:8vw;">@Model.ContactInsta</textarea>
+                                @Html.ValidationMessageFor(model => model.ContactInsta, "", new { @class = "text-danger" })
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="submit" value="Kaydet" class="ad-buton" style="height:2vw" />
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-text-head">
+                    <h5>İLETİŞİM FORMU</h5>
+                </div>
+                <!--<form method="post">
+                    <div>
+                        <input type="text" class="contact-form-item" id="isim" required="required" autocomplete="off" name="ad"
+                               placeholder="İSİM" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="soy_isim" required="required" autocomplete="off" name="soy_ad"
+                               placeholder="SOYİSİM" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="tel_no" required="required" autocomplete="off" name="tel_no"
+                               placeholder="TELEFON" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="mail" required="required" autocomplete="off" name="mail"
+                               placeholder="MAİL" />
+                    </div>
+                    <div>
+                        <input type="text" class="contact-form-item" id="mesaj" required="required" name="mesaj" autocomplete="off"
+                               placeholder="MESAJ" />
+                    </div>
+                    <div>
+                        <button type="submit" value="GÖNDER" class="contact-buton">GÖNDER</button>
+                    </div>
+                </form>-->
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+<footer class="footer-bg">
+    <div class="footer-inside">
+        <div class="footer-logo">
+            <img src="~/Content/img/@Model.FooterImage .png" alt="Myyel Logo" />
+        </div>
+        <div class="footer-text">
+            <div class="text-left" style="">
+                @Html.LabelFor(model => model.FooterText, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:.6vw" })
+                <textarea class="ad-input" id="FooterText" name="FooterText"
+                          value="@Model.FooterText"
+                          style="font-size:.7vw; margin-left:.8vw; width:20vw;">@Model.FooterText</textarea>
+                @Html.ValidationMessageFor(model => model.FooterText, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <input type="submit" value="Kaydet" class="ad-buton" style="height:2vw; margin-top:4vw;" />
+        <div class="footer-copy">
+            <p>&copy;2021-MyyeL Design Tüm Hakları Saklıdır</p>
+        </div>
+    </div>
+
+    <a href="ImageEdit/@Model.FooterImage" class="footer-button">Resmi Değiştir</a>
+</footer>
+
+}

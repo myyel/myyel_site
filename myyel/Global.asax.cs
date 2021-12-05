@@ -29,6 +29,15 @@ namespace myyel
         {
             Application.Lock();
             Counter counter = new Counter();
+            if (_context.counters.Count()>0)
+            {
+                counter = _context.counters.Where(i => i.Id == 1).FirstOrDefault();
+            }
+            else
+            {
+                counter.Id = 1;
+                counter.Count = 0;
+            }
             counter = _context.counters.Where(i => i.Id == 1).FirstOrDefault();
             counter.Count=counter.Count+1;
             _context.Entry(counter).State = EntityState.Modified;

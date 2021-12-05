@@ -1,0 +1,184 @@
+﻿
+.RegLog-bg {
+    width: 100vw;
+    height: 50.4vw;
+    background-image: url('img/project1 .jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: auto;
+    padding: 7vw 14vw 8vw 14vw;
+}
+
+.RegLog-main {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border-radius: 1vw;
+    opacity: .95;
+    display: flex;
+}
+
+.RegLog-form {
+    width: 50%;
+    height: 100%;
+    display: block;
+    color: #fff;
+    padding: 1vw 3vw;
+}
+
+.RegLog-form-inside {
+    width: 100%;
+    height: 3.5vw;
+}
+
+.RegLog-form-inside-title {
+    font-size: 1.2vw;
+    color: #939191;
+    margin-right: 1vw;
+}
+
+.RegLog-form-inside-text {
+    font-size: 1.2vw;
+    color: #fff;
+    text-align: right;
+    align-content: flex-end;
+}
+
+.RegLog-form-inside-btn {
+    margin: .5vw 1.2vw;
+    background-color: #26a10e;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    width: 9vw;
+    height: 1.5vw;
+    font-size: .7vw;
+    border: none;
+}
+
+    .RegLog-form-inside-btn:hover {
+        transform: scale(.97);
+    }
+
+    .RegLog-form-inside-btn:focus {
+        transform: scale(.97);
+        outline:none;
+    }
+
+.RegLog-form-inside-btn-2 {
+    margin-top:10vw;
+    background-color: #363ed3;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    width: 9vw;
+    height: 1.5vw;
+    font-size: .7vw;
+    border: none;
+    padding:.5vw .75vw;
+}
+
+    .RegLog-form-inside-btn-2:hover {
+        transform: scale(.97);
+        padding: .4vw .65vw;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .RegLog-form-inside-btn-2:focus {
+        transform: scale(.97);
+        outline: none;
+    }
+
+.RegLog-form-inside-btn-3 {
+    margin-top: 10vw;
+    background-color: #c11111;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    width: 9vw;
+    height: 1.5vw;
+    font-size: .7vw;
+    border: none;
+    padding: .5vw .75vw;
+}
+
+    .RegLog-form-inside-btn-3:hover {
+        transform: scale(.97);
+        padding: .4vw .65vw;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .RegLog-form-inside-btn-3:focus {
+        transform: scale(.97);
+        outline: none;
+    }
+
+.RegLog-form-input {
+    width: 100%;
+    height: 2vw;
+    background-color: #191919;
+    color: #fff;
+    font-size: 1vw;
+    border: .01vw solid #303030;
+    border-radius: .5vw;
+}
+
+    .RegLog-form-input:focus {
+        border: .01vw solid #fff;
+        border-radius: .5vw;
+        outline: none;
+    }
+
+.RegLog-form-validation {
+    color: #ba0000;
+    font-size: .8vw;
+}
+
+.RegLog-form-inside-password > a {
+    font-size: .8vw;
+    color: #939191;
+    margin-left: 18vw;
+}
+
+    .RegLog-form-inside-password > a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.RegLog-form-btn {
+    width: 100%;
+    height: 2vw;
+    background-color: #26a10e;
+    color: #fff;
+    font-size: 1.2vw;
+    border: none;
+    border-radius: .5vw;
+}
+
+    .RegLog-form-btn:hover {
+        transform: scale(.95);
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .RegLog-form-btn:focus {
+        transform: scale(.95);
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+.RegLog-logo {
+    width: 50%;
+    height: 100%;
+    display: block;
+    padding: 4vw 1vw 3vw 9vw;
+}
+
+    .RegLog-logo > img {
+        opacity: 1;
+        width: 75%;
+    }

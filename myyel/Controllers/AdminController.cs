@@ -33,7 +33,7 @@ namespace myyel.Controllers
                     string imgHtml = "";
                     foreach (var i in sendMailPhotos) 
                     {
-                        imgHtml += "<img src='https://localhost:44329/Admin/SendMailPhotoDetails/" + i.Id + " .jpg' class='img-fluid'/>";
+                        imgHtml += "<img src='https://www.myyeldesign.com/Admin/SendMailPhotoDetails/" + i.Id + " .jpg' class='img-fluid'/>";
                     };
 
                     string htmlBody = "<div style = 'width:70%; margin-left:2vw;' >" +
